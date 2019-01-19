@@ -7,7 +7,10 @@ path="res://.import/snake1.png-83227281cd5aacca9c4b7b92df1d0fd2.stex"
 [deps]
 
 source_file="res://Assets/snake1.png"
+source_md5="ce7961257afcb395f1beab481968336a"
+
 dest_files=[ "res://.import/snake1.png-83227281cd5aacca9c4b7b92df1d0fd2.stex" ]
+dest_md5="0850f68f6eb841c502bf07680977cc50"
 
 [params]
 
