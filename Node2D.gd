@@ -4,12 +4,15 @@ extends Node2D
 # var a = 2
 var furthestX = 0
 var snake
-var snakePosition
+var furthestSnake = null
 
 func furthestSnake():
 	for snake in get_tree().get_nodes_in_group("snakes"):
-		snakePosition = snake.position.x
-	furthestX = snakePosition
+		if (furthestX < snake.position.x):
+			furthestSnake = snake
+	if (furthestSnake != null):
+		furthestX = furthestSnake.position.x
+
 func _process(delta):
 	furthestSnake()
 	self.position = (Vector2(furthestX,0))

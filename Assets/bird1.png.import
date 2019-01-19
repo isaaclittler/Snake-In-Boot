@@ -7,7 +7,10 @@ path="res://.import/bird1.png-6b1da5ad84e176a9a2759b8e18a21cd9.stex"
 [deps]
 
 source_file="res://Assets/bird1.png"
+source_md5="5b876ce3f5f72eda0a912d0220f87de3"
+
 dest_files=[ "res://.import/bird1.png-6b1da5ad84e176a9a2759b8e18a21cd9.stex" ]
+dest_md5="a1c201af285285bbf9a0d24869a812d3"
 
 [params]
 
