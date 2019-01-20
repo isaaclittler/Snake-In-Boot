@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://level1.gd" type="Script" id=1]
-[ext_resource path="res://Node2D.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/level1.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Node2D.gd" type="Script" id=2]
 [ext_resource path="res://Assets/tileSet2.png" type="Texture" id=3]
-[ext_resource path="res://tiles2.res" type="TileSet" id=4]
-[ext_resource path="res://Snake1.gd" type="Script" id=5]
+[ext_resource path="res://Assets/tiles2.res" type="TileSet" id=4]
+[ext_resource path="res://Scripts/Snake1.gd" type="Script" id=5]
 [ext_resource path="res://Assets/snake1.png" type="Texture" id=6]
-[ext_resource path="res://EnemyCollisionCheck.gd" type="Script" id=7]
-[ext_resource path="res://KinematicBody2D.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/EnemyCollisionCheck.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=8]
 [ext_resource path="res://Assets/bird1.png" type="Texture" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -29,13 +29,11 @@ radius = 16.0
 
 [node name="level" type="Node"]
 
-editor/display_folded = true
 script = ExtResource( 1 )
 finishX = 1500
 
 [node name="cameraControl" type="Node2D" parent="." index="0"]
 
-editor/display_folded = true
 visible = false
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
@@ -223,7 +221,6 @@ _sections_unfolded = [ "Collision" ]
 "snakes",
 ]]
 
-editor/display_folded = true
 light_mask = 4
 input_pickable = false
 collision_layer = 4

@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="SnakeInBoot"
-run/main_scene="res://root.tscn"
+run/main_scene="res://Scenes/root.tscn"
 config/icon="res://icon.png"
 
 [input]
@@ -71,7 +71,3 @@ snake_3_move_up=[ Object(InputEventKey,"resource_local_to_scene":false,"resource
 2d_render/layer_3="players"
 2d_physics/layer_3="snakes"
 2d_physics/layer_4="bird"
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"
