@@ -2,10 +2,10 @@ extends KinematicBody2D
 
 const rotationSpeed = 2
 const speed = 300
+const cameraHeight = 284
+const cameraWidth = 495
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	pass
 
 var velocity = Vector2()
@@ -27,16 +27,20 @@ func _physics_process(delta):
 
 
 func _on_TopArea_area_entered(area):
+	self.position = Vector2(self.position.x, cameraHeight)
 	print("top")
 
 
 func _on_BotArea_area_entered(area):
+	self.position = Vector2(self.position.x, -cameraHeight)
 	print("bot")
 
 
 func _on_RightArea_area_entered(area):
+	self.position = Vector2(self.position.x-(cameraWidth*2),self.position.y)
 	print("right")
 
 
 func _on_LeftArea_area_entered(area):
+	self.position = Vector2(self.position.x+(cameraWidth*2),self.position.y)
 	print("left")

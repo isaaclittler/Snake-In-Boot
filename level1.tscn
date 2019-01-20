@@ -77,11 +77,10 @@ audio_bus_name = "Master"
 
 visible = false
 build_mode = 1
-polygon = PoolVector2Array( -508, -296, -510, 300, 508, 296, 508, -296 )
+polygon = PoolVector2Array( -508, -296, -508, 296, 508, 296, 508, -296 )
 
 [node name="TopArea" type="Area2D" parent="cameraControl" index="2"]
 
-editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -93,7 +92,7 @@ audio_bus_name = "Master"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cameraControl/TopArea" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( 512, -300, 536, -320, -532, -320, -512, -300 )
+polygon = PoolVector2Array( 512, -300, 536, -320, -528, -320, -512, -304 )
 
 [node name="BotArea" type="Area2D" parent="cameraControl" index="3"]
 
@@ -109,7 +108,7 @@ audio_bus_name = "Master"
 
 rotation = 3.14159
 build_mode = 0
-polygon = PoolVector2Array( 512, -300, 536, -320, -532, -320, -512, -300 )
+polygon = PoolVector2Array( 510, -300, 534, -320, -532, -320, -512, -300 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="RightArea" type="Area2D" parent="cameraControl" index="4"]
