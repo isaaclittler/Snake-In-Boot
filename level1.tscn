@@ -63,24 +63,7 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Drag Margin", "Smoothing", "Transform" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="cameraControl" index="1"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Collision" ]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cameraControl/StaticBody2D" index="0"]
-
-visible = false
-build_mode = 1
-polygon = PoolVector2Array( -510, -300, -510, 300, 510, 300, 510, -300 )
-
-[node name="Area2D" type="Area2D" parent="cameraControl" index="2"]
+[node name="Area2D" type="Area2D" parent="cameraControl" index="1"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -94,7 +77,73 @@ audio_bus_name = "Master"
 
 visible = false
 build_mode = 1
-polygon = PoolVector2Array( -510, -300, -510, 300, 510, 300, 510, -300 )
+polygon = PoolVector2Array( -508, -296, -510, 300, 508, 296, 508, -296 )
+
+[node name="TopArea" type="Area2D" parent="cameraControl" index="2"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cameraControl/TopArea" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 512, -300, 536, -320, -532, -320, -512, -300 )
+
+[node name="BotArea" type="Area2D" parent="cameraControl" index="3"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cameraControl/BotArea" index="0"]
+
+rotation = 3.14159
+build_mode = 0
+polygon = PoolVector2Array( 512, -300, 536, -320, -532, -320, -512, -300 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="RightArea" type="Area2D" parent="cameraControl" index="4"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cameraControl/RightArea" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 512, -296, 536, -316, 532, 316, 512, 296 )
+
+[node name="LeftArea" type="Area2D" parent="cameraControl" index="5"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cameraControl/LeftArea" index="0"]
+
+rotation = 3.14159
+build_mode = 0
+polygon = PoolVector2Array( 512, -300, 536, -320, 532, 320, 512, 300 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="TileMap" type="TileMap" parent="." index="1"]
 
@@ -304,6 +353,14 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Bird1/Area2D" index="0"]
 
 shape = SubResource( 3 )
+
+[connection signal="area_entered" from="cameraControl/TopArea" to="Bird1" method="_on_TopArea_area_entered"]
+
+[connection signal="area_entered" from="cameraControl/BotArea" to="Bird1" method="_on_BotArea_area_entered"]
+
+[connection signal="area_entered" from="cameraControl/RightArea" to="Bird1" method="_on_RightArea_area_entered"]
+
+[connection signal="area_entered" from="cameraControl/LeftArea" to="Bird1" method="_on_LeftArea_area_entered"]
 
 [connection signal="area_entered" from="Snake1/EnemyCollisionCheck" to="Snake1" method="_on_EnemyCollisionCheck_area_entered"]
 

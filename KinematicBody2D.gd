@@ -24,3 +24,19 @@ func _physics_process(delta):
 	rotation += rotationDir * rotationSpeed * delta
 	velocity = Vector2(speed,0).rotated(rotation)
 	move_and_slide(velocity)
+
+
+func _on_TopArea_area_entered(area):
+	print("top")
+
+
+func _on_BotArea_area_entered(area):
+	print("bot")
+
+
+func _on_RightArea_area_entered(area):
+	print("right")
+
+
+func _on_LeftArea_area_entered(area):
+	print("left")
