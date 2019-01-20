@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-const rotationSpeed = 2
-const speed = 300
+const rotationSpeed = 3
+const speed = 350
 const cameraHeight = 284
 const cameraWidth = 495
 
