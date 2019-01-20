@@ -6,11 +6,16 @@ export var furthestX = 0
 export var winningSnake = "test"
 var snake
 var furthestSnake = null
+var temp = 0
 
 func furthestSnake():
+	furthestSnake = get_tree().get_nodes_in_group("snakes")[0]
+	furthestX = furthestSnake.position.x
 	for snake in get_tree().get_nodes_in_group("snakes"):
-		if (furthestX < snake.position.x):
+		temp = snake.position.x
+		if temp > furthestX:
 			furthestSnake = snake
+		#elif snake.position.x 
 	if (furthestSnake != null):
 		furthestX = furthestSnake.position.x
 		winningSnake = furthestSnake
