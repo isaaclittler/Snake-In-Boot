@@ -3,12 +3,14 @@ extends KinematicBody2D
 export var leftInput = "ui_left"
 export var rightInput = "ui_right"
 export var upInput = "ui_up"
+export var numAirJumps = 1
 
-const GRAVITY = 500.0
+const GRAVITY = 400.0
 const BASE_SPEED = 200
 const JUMP_SPEED = 300
 
 var velocity = Vector2()
+var curAirJumps = 0
 
 func _physics_process(delta):
 	velocity.y += delta * GRAVITY
@@ -20,9 +22,13 @@ func _physics_process(delta):
 		velocity.x = 0
 	if (is_on_ceiling()):
 		velocity.y += JUMP_SPEED / 2
-		
-	if Input.is_action_just_pressed(upInput) && is_on_floor():
+	if is_on_floor():
+		curAirJumps = numAirJumps
+	if Input.is_action_just_pressed(upInput) and is_on_floor():
 		velocity.y = -JUMP_SPEED
+	elif Input.is_action_just_pressed(upInput) and curAirJumps != 0:
+		velocity.y = -JUMP_SPEED
+		curAirJumps -= 1
 	
 	move_and_slide(velocity, Vector2(0, -1))
 

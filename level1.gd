@@ -3,7 +3,7 @@ extends Node
 
 var snakes = 0
 var cameraControl
-var finishX = 700
+export var finishX = 1500
 signal reset
 
 func _ready(): #set the finish point by object in here
