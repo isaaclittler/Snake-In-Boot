@@ -9,6 +9,8 @@ script = ExtResource( 1 )
 
 [node name="level" parent="." index="0" instance=ExtResource( 2 )]
 
+winner = "snake wins"
+
 [connection signal="reset" from="level" to="." method="_on_level_reset"]
 
 

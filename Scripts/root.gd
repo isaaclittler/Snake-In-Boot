@@ -2,7 +2,8 @@ extends Node
 
 # class member variables go here, for example:
 # var a = 2
-# var b = "textvar"
+var gameEnd
+var gameWinner
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -16,13 +17,16 @@ func _ready():
 
 
 func _on_level_reset():# Remove the current level
-	print("0")
 	var level = get_node("level")
+	gameWinner = level.winner
 	remove_child(level)
 	level.call_deferred("free")
-	print("1")
+	#gameEndScreen
+	gameEnd = preload("res://Scenes/gameEndScreen.tscn").instance()
+	add_child(gameEnd)
+	gameEnd = get_node("MarginContainer/Label")
+	gameEnd.text = gameWinner
 	# Add the next level
 	level = preload("res://Scenes/level1.tscn").instance()
-	print("2")
 	add_child(level)
 	level.connect("reset", self, "_on_level_reset")
