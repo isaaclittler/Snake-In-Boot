@@ -23,17 +23,5 @@ func winCond():
 		print(cameraControl.winningSnake," snake wins")
 		emit_signal("reset")
 
-func reLoad():
-	# Remove the current level
-	var root = get_owner()
-	var level = root.get_node("level")
-	root.remove_child(level)
-	level.call_deferred("free")
-
-	# Add the next level
-	var next_level_resource = load("res://level1.tscn")
-	var next_level = next_level.instance()
-	root.add_child(next_level)
-
 func _process(delta):
 	winCond()
