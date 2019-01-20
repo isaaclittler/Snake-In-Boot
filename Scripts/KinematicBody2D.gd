@@ -13,6 +13,7 @@ func _ready():
 
 var velocity = Vector2()
 var rotationDir = 0
+signal visionBlock
 
 func getInput():
 	rotationDir = 0
@@ -21,6 +22,9 @@ func getInput():
 		rotationDir -= 1
 	elif Input.is_action_pressed("bird_move_right"):
 		rotationDir += 1
+	if Input.is_action_just_pressed("bird_ability_1"):
+		print("pew pew")
+		emit_signal("visionBlock")
 
 func _physics_process(delta):
 	getInput()
