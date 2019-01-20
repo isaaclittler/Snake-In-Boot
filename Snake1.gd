@@ -28,4 +28,4 @@ func _physics_process(delta):
 
 func _on_EnemyCollisionCheck_area_entered(area):
 	print("collision")
-	get_parent().remove_child(self)
+	queue_free()
