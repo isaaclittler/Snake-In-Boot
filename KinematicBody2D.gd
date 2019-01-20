@@ -5,7 +5,10 @@ const speed = 300
 const cameraHeight = 284
 const cameraWidth = 495
 
+var cameraX = 0
+
 func _ready():
+	
 	pass
 
 var velocity = Vector2()
@@ -37,10 +40,13 @@ func _on_BotArea_area_entered(area):
 
 
 func _on_RightArea_area_entered(area):
-	self.position = Vector2(self.position.x-(cameraWidth*2),self.position.y)
+	cameraX = get_node("../cameraControl").position.x
+	self.position = Vector2(cameraX-(cameraWidth),self.position.y)
 	print("right")
 
 
+
 func _on_LeftArea_area_entered(area):
-	self.position = Vector2(self.position.x+(cameraWidth*2),self.position.y)
+	cameraX = get_node("../cameraControl").position.x
+	self.position = Vector2(cameraX+(cameraWidth),self.position.y)
 	print("left")
