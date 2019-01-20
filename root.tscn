@@ -3,13 +3,11 @@
 [ext_resource path="res://root.gd" type="Script" id=1]
 [ext_resource path="res://level1.tscn" type="PackedScene" id=2]
 
-[node name="root" type="Node"]
+[node name="root" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
 [node name="level" parent="." index="0" instance=ExtResource( 2 )]
-
-finishX = 1500
 
 [connection signal="reset" from="level" to="." method="_on_level_reset"]
 

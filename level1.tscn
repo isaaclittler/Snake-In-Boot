@@ -27,8 +27,9 @@ height = 5.0
 custom_solver_bias = 0.0
 radius = 16.0
 
-[node name="level" type="Node" index="0"]
+[node name="level" type="Node"]
 
+editor/display_folded = true
 script = ExtResource( 1 )
 finishX = 1500
 
