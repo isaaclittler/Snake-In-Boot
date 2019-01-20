@@ -18,7 +18,6 @@ func _physics_process(delta):
 		velocity.x =  BASE_SPEED
 	else:
 		velocity.x = 0
-		
 	if (is_on_ceiling()):
 		velocity.y += JUMP_SPEED / 2
 		
@@ -26,3 +25,7 @@ func _physics_process(delta):
 		velocity.y = -JUMP_SPEED
 	
 	move_and_slide(velocity, Vector2(0, -1))
+
+func _on_EnemyCollisionCheck_area_entered(area):
+	print("collision")
+	get_parent().remove_child(self)
