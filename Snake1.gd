@@ -4,9 +4,9 @@ export var leftInput = "ui_left"
 export var rightInput = "ui_right"
 export var upInput = "ui_up"
 
-const GRAVITY = 200.0
+const GRAVITY = 500.0
 const BASE_SPEED = 200
-const JUMP_SPEED = 200
+const JUMP_SPEED = 300
 
 var velocity = Vector2()
 

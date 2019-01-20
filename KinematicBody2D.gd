@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-const rotationSpeed = 1.5
-const speed = 100
+const rotationSpeed = 2
+const speed = 300
 
 func _ready():
 	# Called every time the node is added to the scene.
