@@ -66,6 +66,8 @@ _sections_unfolded = [ "Drag Margin", "Limit", "Offset", "Smoothing", "Transform
 
 [node name="Area2D" type="Area2D" parent="cameraControl" index="1"]
 
+editor/display_folded = true
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -76,12 +78,12 @@ audio_bus_name = "Master"
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="cameraControl/Area2D" index="0"]
 
-visible = false
 build_mode = 1
 polygon = PoolVector2Array( -508, -296, -508, 296, 508, 296, 508, -296 )
 
 [node name="TopArea" type="Area2D" parent="cameraControl" index="2"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -97,6 +99,7 @@ polygon = PoolVector2Array( 512, -300, 536, -320, -528, -320, -512, -304 )
 
 [node name="BotArea" type="Area2D" parent="cameraControl" index="3"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -114,6 +117,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="RightArea" type="Area2D" parent="cameraControl" index="4"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -125,7 +129,7 @@ audio_bus_name = "Master"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cameraControl/RightArea" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( 512, -296, 536, -316, 532, 316, 512, 296 )
+polygon = PoolVector2Array( 512, -296, 764, -516, 762, 560, 512, 296 )
 
 [node name="LeftArea" type="Area2D" parent="cameraControl" index="5"]
 
@@ -142,7 +146,7 @@ audio_bus_name = "Master"
 
 rotation = 3.14159
 build_mode = 0
-polygon = PoolVector2Array( 512, -300, 536, -320, 532, 320, 512, 300 )
+polygon = PoolVector2Array( 512, -300, 812.001, -543.998, 809.999, 524.002, 512, 300 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Fire1" type="Sprite" parent="cameraControl" index="6"]
@@ -215,6 +219,7 @@ _sections_unfolded = [ "Collision" ]
 "snakes",
 ]]
 
+editor/display_folded = true
 light_mask = 4
 input_pickable = false
 collision_layer = 4
