@@ -239,7 +239,9 @@ numAirJumps = 1
 
 z_index = 1
 texture = ExtResource( 6 )
-_sections_unfolded = [ "Z Index" ]
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+_sections_unfolded = [ "Region" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snake1" index="1"]
 
@@ -273,7 +275,6 @@ _sections_unfolded = [ "Transform" ]
 "snakes",
 ]]
 
-editor/display_folded = true
 light_mask = 4
 position = Vector2( -64, 0 )
 input_pickable = false
@@ -291,7 +292,9 @@ numAirJumps = 1
 
 z_index = 1
 texture = ExtResource( 6 )
-_sections_unfolded = [ "Z Index" ]
+region_enabled = true
+region_rect = Rect2( 32, 0, 32, 32 )
+_sections_unfolded = [ "Region", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snake2" index="1"]
 
@@ -342,7 +345,9 @@ numAirJumps = 1
 
 z_index = 1
 texture = ExtResource( 6 )
-_sections_unfolded = [ "Z Index" ]
+region_enabled = true
+region_rect = Rect2( 64, 0, 32, 32 )
+_sections_unfolded = [ "Region", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snake3" index="1"]
 
@@ -427,6 +432,7 @@ shape = SubResource( 3 )
 
 [node name="laser" type="Sprite" parent="." index="7"]
 
+editor/display_folded = true
 position = Vector2( 0, -500 )
 scale = Vector2( 1, 16 )
 texture = ExtResource( 11 )

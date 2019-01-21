@@ -36,13 +36,14 @@ func getInput():
 		rotationDir -= 1
 	elif Input.is_action_pressed("bird_move_right"):
 		rotationDir += 1
+	#if Input.is_action_just_pressed("bird_ability_1")\
+	#and lasering == false:
+	#	rotation += PI
 	if Input.is_action_just_pressed("bird_ability_1")\
 	and lasering == false:
-		rotation += PI
-	if Input.is_action_just_pressed("bird_ability_2"):
 		#print("pew pew")
 		emit_signal("visionBlock")
-	if Input.is_action_just_pressed("bird_ability_3"):
+	if Input.is_action_just_pressed("bird_ability_2"):
 		ability3()
 	#if Input.is_action_just_pressed("bird_ability_4"):
 		
