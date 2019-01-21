@@ -12,6 +12,7 @@ var tAbility3 = 5
 var dAbility3 = 0
 var lasering = false
 onready var laser = get_node("../laser")
+onready var prelaser = get_node("../prelaser")
 
 #func _ready():
 	
@@ -69,8 +70,13 @@ func ability3():
 		lasering = true
 
 func laser():
-	laser.position = self.position
-	laser.rotation = self.rotation + PI * .5
+	if tAbility3 < 1:
+		prelaser.position = self.position
+		prelaser.rotation = self.rotation + PI * .5
+	else:
+		laser.position = self.position
+		laser.rotation = self.rotation + PI * .5
+		prelaser.position.y = 5000
 
 func _on_TopArea_area_entered(area):
 	self.position = Vector2(self.position.x, cameraHeight)
