@@ -3,7 +3,7 @@ extends Node
 
 var snakes = 0
 var cameraControl
-export var finishX = 1500
+export var finishX = 3000
 export var winner = "snake wins"
 signal reset
 
