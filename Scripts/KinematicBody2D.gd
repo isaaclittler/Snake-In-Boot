@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const rotationSpeed = 3
+const rotationSpeed = 2
 const speed = 350
 const cameraHeight = 284
 const cameraWidth = 495
@@ -64,7 +64,7 @@ func abilityReset():
 func ability3():
 	if tAbility3 > 5:
 		print("ability 3")
-		currRotationSpeed = 1
+		currRotationSpeed = .5
 		currSpeed = 100
 		tAbility3 = 0
 		dAbility3 = 0
