@@ -273,6 +273,7 @@ _sections_unfolded = [ "Transform" ]
 "snakes",
 ]]
 
+editor/display_folded = true
 light_mask = 4
 position = Vector2( -64, 0 )
 input_pickable = false
@@ -385,6 +386,7 @@ _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="Bird1" type="KinematicBody2D" parent="." index="6"]
 
+editor/display_folded = true
 light_mask = 4
 position = Vector2( 199, -27 )
 input_pickable = false
@@ -425,6 +427,7 @@ shape = SubResource( 3 )
 
 [node name="laser" type="Sprite" parent="." index="7"]
 
+editor/display_folded = true
 position = Vector2( 0, -500 )
 scale = Vector2( 1, 16 )
 texture = ExtResource( 11 )
