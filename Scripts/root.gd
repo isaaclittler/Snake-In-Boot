@@ -5,7 +5,7 @@ extends Node
 export var lvlSelect = 1
 var gameEnd
 var gameWinner
-var printing
+var printing = ""
 var birdGamesWon = 0
 
 func _ready():
@@ -27,8 +27,8 @@ func _on_level_reset():# Remove the current level
 
 func update_text():
 	gameEnd = get_node("MarginContainer/Label")
-	print(gameEnd)
-	gameEnd.text = printing
+	if gameEnd != null:
+		gameEnd.text = printing
 
 func game_win():
 	var level = get_node("level")
@@ -67,19 +67,8 @@ func level_select(a):
 func _on_Button_pressed():
 	level_select(1)
 
-
 func _on_Button2_pressed():
-	lvlSelect = 2
-	birdGamesWon = 0
-	printing = ""
-	level_delete()
-	level_load()
-	update_text()
-
+	level_select(2)
 
 func _on_Button3_pressed():
-	lvlSelect = 3
-	birdGamesWon = 0
-	printing = ""
-	level_delete()
-	level_load()
+	level_select(3)
