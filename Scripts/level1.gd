@@ -9,6 +9,18 @@ signal reset
 
 func _ready(): #set the finish point by object in here
 	connect("reset", self, "root")
+	if get_parent().lvlSelect == 1:
+		var loading = preload("res://Scenes/levels/lvl_1.tscn").instance()
+		add_child(loading)
+		print("1")
+	elif get_parent().lvlSelect == 2:
+		var loading = preload("res://Scenes/levels/lvl_2.tscn").instance()
+		add_child(loading)
+		print("2")
+	elif get_parent().lvlSelect == 3:
+		var loading = preload("res://Scenes/levels/lvl_3.tscn").instance()
+		add_child(loading)
+		print("2")
 	print("level loaded")
 	pass
 
