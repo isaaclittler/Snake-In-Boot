@@ -10,7 +10,7 @@ const BASE_SPEED = 200
 const JUMP_SPEED = 200
 
 var velocity = Vector2()
-var curAirJumps = 0
+var curAirJumps = 1
 
 func _physics_process(delta):
 	velocity.y += delta * GRAVITY

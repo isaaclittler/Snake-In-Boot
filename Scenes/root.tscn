@@ -10,7 +10,7 @@ lvlSelect = 1
 
 [node name="level" parent="." index="0" instance=ExtResource( 2 )]
 
-[node name="GridContainer" type="GridContainer" parent="." index="1"]
+[node name="LevelSelect" type="GridContainer" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -28,7 +28,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 columns = 1
 
-[node name="Button" type="Button" parent="GridContainer" index="0"]
+[node name="Button" type="Button" parent="LevelSelect" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -51,7 +51,7 @@ text = "Level 1"
 flat = false
 align = 1
 
-[node name="Button2" type="Button" parent="GridContainer" index="1"]
+[node name="Button2" type="Button" parent="LevelSelect" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -75,7 +75,7 @@ text = "Level 2"
 flat = false
 align = 1
 
-[node name="Button3" type="Button" parent="GridContainer" index="2"]
+[node name="Button3" type="Button" parent="LevelSelect" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -101,10 +101,10 @@ align = 1
 
 [connection signal="reset" from="level" to="." method="_on_level_reset"]
 
-[connection signal="pressed" from="GridContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="LevelSelect/Button" to="." method="_on_Button_pressed"]
 
-[connection signal="pressed" from="GridContainer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="LevelSelect/Button2" to="." method="_on_Button2_pressed"]
 
-[connection signal="pressed" from="GridContainer/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="LevelSelect/Button3" to="." method="_on_Button3_pressed"]
 
 
