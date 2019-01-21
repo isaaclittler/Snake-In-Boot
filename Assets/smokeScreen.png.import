@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/snake1.png-83227281cd5aacca9c4b7b92df1d0fd2.stex"
+path="res://.import/smokeScreen.png-4c3a87ef9b8093e1b3ff50ff6a5537dc.stex"
 
 [deps]
 
-source_file="res://Assets/snake1.png"
-source_md5="c29c07f5e211f29fe5c89ff471d924c6"
+source_file="res://Assets/smokeScreen.png"
+source_md5="1c72348500af593c05552b4db54ebc75"
 
-dest_files=[ "res://.import/snake1.png-83227281cd5aacca9c4b7b92df1d0fd2.stex" ]
-dest_md5="68019b4c39b71ae8c69915e2c53b8774"
+dest_files=[ "res://.import/smokeScreen.png-4c3a87ef9b8093e1b3ff50ff6a5537dc.stex" ]
+dest_md5="c347ef2ffddb51cf967e43da12092fb6"
 
 [params]
 

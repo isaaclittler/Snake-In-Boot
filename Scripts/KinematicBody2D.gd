@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const rotationSpeed = 3
+const rotationSpeed = 2
 const speed = 350
 const cameraHeight = 284
 const cameraWidth = 495
@@ -12,6 +12,7 @@ var tAbility3 = 5
 var dAbility3 = 0
 var lasering = false
 onready var laser = get_node("../laser")
+onready var prelaser = get_node("../prelaser")
 
 #func _ready():
 	
@@ -35,13 +36,14 @@ func getInput():
 		rotationDir -= 1
 	elif Input.is_action_pressed("bird_move_right"):
 		rotationDir += 1
+	#if Input.is_action_just_pressed("bird_ability_1")\
+	#and lasering == false:
+	#	rotation += PI
 	if Input.is_action_just_pressed("bird_ability_1")\
 	and lasering == false:
-		rotation += PI
-	if Input.is_action_just_pressed("bird_ability_2"):
 		#print("pew pew")
 		emit_signal("visionBlock")
-	if Input.is_action_just_pressed("bird_ability_3"):
+	if Input.is_action_just_pressed("bird_ability_2"):
 		ability3()
 	#if Input.is_action_just_pressed("bird_ability_4"):
 		
@@ -62,15 +64,20 @@ func abilityReset():
 func ability3():
 	if tAbility3 > 5:
 		print("ability 3")
-		currRotationSpeed = 1
+		currRotationSpeed = .5
 		currSpeed = 100
 		tAbility3 = 0
 		dAbility3 = 0
 		lasering = true
 
 func laser():
-	laser.position = self.position
-	laser.rotation = self.rotation + PI * .5
+	if tAbility3 < 1:
+		prelaser.position = self.position
+		prelaser.rotation = self.rotation + PI * .5
+	else:
+		laser.position = self.position
+		laser.rotation = self.rotation + PI * .5
+		prelaser.position.y = 5000
 
 func _on_TopArea_area_entered(area):
 	self.position = Vector2(self.position.x, cameraHeight)

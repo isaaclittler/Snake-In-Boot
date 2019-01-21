@@ -5,9 +5,9 @@ export var rightInput = "ui_right"
 export var upInput = "ui_up"
 export var numAirJumps = 1
 
-const GRAVITY = 400.0
+const GRAVITY = 250.0
 const BASE_SPEED = 200
-const JUMP_SPEED = 300
+const JUMP_SPEED = 200
 
 var velocity = Vector2()
 var curAirJumps = 0

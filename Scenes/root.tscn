@@ -9,6 +9,8 @@ script = ExtResource( 1 )
 
 [node name="level" parent="." index="0" instance=ExtResource( 2 )]
 
+finishX = 3000
+
 [connection signal="reset" from="level" to="." method="_on_level_reset"]
 
 
