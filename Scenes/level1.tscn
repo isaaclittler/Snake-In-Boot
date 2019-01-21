@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/level1.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Node2D.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/visionBlocker.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=9]
 [ext_resource path="res://Assets/bird1.png" type="Texture" id=10]
+[ext_resource path="res://Assets/tileSet1.png" type="Texture" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -28,7 +29,7 @@ height = 5.0
 custom_solver_bias = 0.0
 radius = 16.0
 
-[node name="level" type="Node"]
+[node name="level" type="Node" index="0"]
 
 script = ExtResource( 1 )
 finishX = 1500
@@ -222,7 +223,6 @@ _sections_unfolded = [ "Collision", "Transform" ]
 "snakes",
 ]]
 
-editor/display_folded = true
 light_mask = 4
 input_pickable = false
 collision_layer = 4
@@ -257,7 +257,7 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 collision_layer = 0
-collision_mask = 9
+collision_mask = 25
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 7 )
@@ -309,7 +309,7 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 collision_layer = 0
-collision_mask = 9
+collision_mask = 25
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 7 )
@@ -325,7 +325,6 @@ _sections_unfolded = [ "Transform" ]
 "snakes",
 ]]
 
-editor/display_folded = true
 light_mask = 4
 position = Vector2( 0, -64 )
 input_pickable = false
@@ -361,7 +360,7 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 collision_layer = 0
-collision_mask = 9
+collision_mask = 25
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 7 )
@@ -387,6 +386,7 @@ _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="Bird1" type="KinematicBody2D" parent="." index="6"]
 
+editor/display_folded = true
 light_mask = 4
 position = Vector2( 199, -27 )
 input_pickable = false
@@ -419,10 +419,42 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Bird1/Area2D" index="0"]
 
 shape = SubResource( 3 )
+
+[node name="laser" type="Sprite" parent="." index="7"]
+
+editor/display_folded = true
+position = Vector2( 0, -500 )
+scale = Vector2( 1, 16 )
+texture = ExtResource( 11 )
+offset = Vector2( 0, -17 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 32, 32 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Area2D" type="Area2D" parent="laser" index="0"]
+
+position = Vector2( 0, -1 )
+scale = Vector2( 1, 0.0666667 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 16
+collision_mask = 0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Audio Bus", "Collision", "Transform" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="laser/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 16, 0, 16, -480, -16, -480, -16, 0 )
 
 [connection signal="area_entered" from="cameraControl/TopArea" to="Bird1" method="_on_TopArea_area_entered"]
 

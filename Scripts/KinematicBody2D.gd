@@ -6,14 +6,27 @@ const cameraHeight = 284
 const cameraWidth = 495
 
 var cameraX = 0
+var currRotationSpeed = rotationSpeed
+var currSpeed = speed
+var tAbility3 = 5
+var dAbility3 = 0
+var lasering = false
+onready var laser = get_node("../laser")
 
-func _ready():
+#func _ready():
 	
-	pass
+	#pass
 
 var velocity = Vector2()
 var rotationDir = 0
 signal visionBlock
+
+func _process(delta):
+	tAbility3 += delta
+	dAbility3 += delta
+	if lasering == true:
+		laser()
+	abilityReset()
 
 func getInput():
 	rotationDir = 0
@@ -22,16 +35,42 @@ func getInput():
 		rotationDir -= 1
 	elif Input.is_action_pressed("bird_move_right"):
 		rotationDir += 1
-	if Input.is_action_just_pressed("bird_ability_1"):
-		print("pew pew")
+	if Input.is_action_just_pressed("bird_ability_1")\
+	and lasering == false:
+		rotation += PI
+	if Input.is_action_just_pressed("bird_ability_2"):
+		#print("pew pew")
 		emit_signal("visionBlock")
+	if Input.is_action_just_pressed("bird_ability_3"):
+		ability3()
+	#if Input.is_action_just_pressed("bird_ability_4"):
+		
 
 func _physics_process(delta):
 	getInput()
-	rotation += rotationDir * rotationSpeed * delta
-	velocity = Vector2(speed,0).rotated(rotation)
+	rotation += rotationDir * currRotationSpeed * delta
+	velocity = Vector2(currSpeed,0).rotated(rotation)
 	move_and_slide(velocity)
 
+func abilityReset():
+	if dAbility3 > 3:
+		currRotationSpeed = rotationSpeed
+		currSpeed = speed
+		lasering = false
+		laser.position.y = -5000
+
+func ability3():
+	if tAbility3 > 5:
+		print("ability 3")
+		currRotationSpeed = 1
+		currSpeed = 100
+		tAbility3 = 0
+		dAbility3 = 0
+		lasering = true
+
+func laser():
+	laser.position = self.position
+	laser.rotation = self.rotation + PI * .5
 
 func _on_TopArea_area_entered(area):
 	self.position = Vector2(self.position.x, cameraHeight)
