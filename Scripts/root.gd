@@ -3,6 +3,7 @@ extends Node
 # class member variables go here, for example:
 # var a = 2
 export var lvlSelect = 1
+export var playerWinner = 0
 var gameEnd
 var gameWinner
 var printing = ""
@@ -34,6 +35,7 @@ func game_win():
 	var level = get_node("level")
 	gameWinner = level.winner
 	if gameWinner == "bird win":
+		playerWinner = level.birdNumber
 		birdGamesWon += 1
 		if birdGamesWon < 5:
 			printing = ""
@@ -41,7 +43,9 @@ func game_win():
 			printing = "bird win"
 	else:
 		birdGamesWon = 0
+		playerWinner = level.winningPlayer
 		printing = "snake win"
+	#print(playerWinner,"root")
 
 
 func level_delete():
@@ -51,6 +55,7 @@ func level_delete():
 func level_load():
 	var level = preload("res://Scenes/level1.tscn").instance()
 	add_child(level)
+	#level.birdNumber = playerWinner
 	level.connect("reset", self, "_on_level_reset")
 	gameEnd = preload("res://Scenes/gameEndScreen.tscn").instance()
 	add_child(gameEnd)
@@ -59,6 +64,7 @@ func level_select(a):
 	lvlSelect = a
 	birdGamesWon = 0
 	printing = ""
+	playerWinner = randi()%4
 	level_delete()
 	update_text()
 	level_load()

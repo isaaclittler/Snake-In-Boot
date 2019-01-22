@@ -3,14 +3,19 @@
 [ext_resource path="res://Scripts/level1.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Node2D.gd" type="Script" id=2]
 [ext_resource path="res://Assets/tileSet2.png" type="Texture" id=3]
-[ext_resource path="res://Scripts/Snake1.gd" type="Script" id=4]
-[ext_resource path="res://Assets/snake1.png" type="Texture" id=5]
-[ext_resource path="res://Scripts/EnemyCollisionCheck.gd" type="Script" id=6]
-[ext_resource path="res://Assets/smokeScreen.png" type="Texture" id=7]
-[ext_resource path="res://Scenes/visionBlocker.gd" type="Script" id=8]
-[ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=9]
-[ext_resource path="res://Assets/bird1.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=4]
+[ext_resource path="res://Assets/bird1.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/Snake1.gd" type="Script" id=6]
+[ext_resource path="res://Assets/snake1.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/EnemyCollisionCheck.gd" type="Script" id=8]
+[ext_resource path="res://Assets/smokeScreen.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/visionBlocker.gd" type="Script" id=10]
 [ext_resource path="res://Assets/lazer.png" type="Texture" id=11]
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 16.0
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -24,17 +29,13 @@ custom_solver_bias = 0.0
 radius = 10.0
 height = 5.0
 
-[sub_resource type="CircleShape2D" id=3]
-
-custom_solver_bias = 0.0
-radius = 16.0
-
 [node name="level" type="Node"]
 
-editor/display_folded = true
 script = ExtResource( 1 )
 finishX = 3000
 winner = "snake wins"
+birdNumber = 0
+winningPlayer = 0
 
 [node name="cameraControl" type="Node2D" parent="." index="0"]
 
@@ -210,26 +211,74 @@ region_enabled = true
 region_rect = Rect2( 341, 1, 32, 32 )
 _sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
 
-[node name="Snake1" type="KinematicBody2D" parent="." index="1" groups=[
+[node name="Bird1" type="KinematicBody2D" parent="." index="1"]
+
+editor/display_folded = true
+light_mask = 4
+position = Vector2( 199, -27 )
+input_pickable = false
+collision_layer = 8
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 4 )
+_sections_unfolded = [ "Collision", "Visibility", "collision" ]
+left = ""
+right = ""
+a = ""
+b = ""
+x = ""
+y = ""
+
+[node name="Sprite" type="Sprite" parent="Bird1" index="0"]
+
+light_mask = 4
+rotation = 1.5708
+z_index = 3
+texture = ExtResource( 5 )
+offset = Vector2( -1, -2 )
+_sections_unfolded = [ "Animation", "Offset", "Visibility", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird1" index="1"]
+
+shape = SubResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="Bird1" index="2"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bird1/Area2D" index="0"]
+
+shape = SubResource( 3 )
+
+[node name="Snake1" type="KinematicBody2D" parent="." index="2" groups=[
 "snakes",
 ]]
 
+editor/display_folded = true
 light_mask = 4
 input_pickable = false
 collision_layer = 4
 collision_mask = 6
 collision/safe_margin = 0.08
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Collision", "Transform", "Visibility" ]
-leftInput = "snake_1_move_left"
-rightInput = "snake_1_move_right"
-upInput = "snake_1_move_up"
+leftInput = ""
+rightInput = ""
+aInput = ""
 numAirJumps = 1
 
 [node name="Sprite" type="Sprite" parent="Snake1" index="0"]
 
 z_index = 1
-texture = ExtResource( 5 )
+texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
 _sections_unfolded = [ "Region" ]
@@ -253,7 +302,7 @@ collision_layer = 0
 collision_mask = 25
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snake1/EnemyCollisionCheck" index="0"]
@@ -262,27 +311,28 @@ position = Vector2( -3, 1 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Snake2" type="KinematicBody2D" parent="." index="2" groups=[
+[node name="Snake2" type="KinematicBody2D" parent="." index="3" groups=[
 "snakes",
 ]]
 
+editor/display_folded = true
 light_mask = 4
 position = Vector2( -64, 0 )
 input_pickable = false
 collision_layer = 4
 collision_mask = 6
 collision/safe_margin = 0.08
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Collision", "Transform" ]
-leftInput = "snake_2_move_left"
-rightInput = "snake_2_move_right"
-upInput = "snake_2_move_up"
+leftInput = ""
+rightInput = ""
+aInput = ""
 numAirJumps = 1
 
 [node name="Sprite" type="Sprite" parent="Snake2" index="0"]
 
 z_index = 1
-texture = ExtResource( 5 )
+texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 32, 0, 32, 32 )
 _sections_unfolded = [ "Region", "Z Index" ]
@@ -306,7 +356,7 @@ collision_layer = 0
 collision_mask = 25
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snake2/EnemyCollisionCheck" index="0"]
@@ -315,27 +365,28 @@ position = Vector2( -3, 1 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Snake3" type="KinematicBody2D" parent="." index="3" groups=[
+[node name="Snake3" type="KinematicBody2D" parent="." index="4" groups=[
 "snakes",
 ]]
 
+editor/display_folded = true
 light_mask = 4
 position = Vector2( 0, -64 )
 input_pickable = false
 collision_layer = 4
 collision_mask = 6
 collision/safe_margin = 0.08
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Collision", "Transform", "Visibility" ]
-leftInput = "snake_3_move_left"
-rightInput = "snake_3_move_right"
-upInput = "snake_3_move_up"
+leftInput = ""
+rightInput = ""
+aInput = ""
 numAirJumps = 1
 
 [node name="Sprite" type="Sprite" parent="Snake3" index="0"]
 
 z_index = 1
-texture = ExtResource( 5 )
+texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 64, 0, 32, 32 )
 _sections_unfolded = [ "Region", "Z Index" ]
@@ -359,7 +410,7 @@ collision_layer = 0
 collision_mask = 25
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snake3/EnemyCollisionCheck" index="0"]
@@ -368,56 +419,16 @@ position = Vector2( -3, 1 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="smokeScreen" type="Sprite" parent="." index="4"]
+[node name="smokeScreen" type="Sprite" parent="." index="5"]
 
 visible = false
 position = Vector2( 199, -27 )
 scale = Vector2( 2.5, 2.5 )
 z_index = 2
-texture = ExtResource( 7 )
+texture = ExtResource( 9 )
 region_rect = Rect2( 341, 1, 32, 32 )
-script = ExtResource( 8 )
+script = ExtResource( 10 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
-
-[node name="Bird1" type="KinematicBody2D" parent="." index="5"]
-
-light_mask = 4
-position = Vector2( 199, -27 )
-input_pickable = false
-collision_layer = 8
-collision_mask = 1
-collision/safe_margin = 0.08
-script = ExtResource( 9 )
-_sections_unfolded = [ "Collision", "Visibility", "collision" ]
-
-[node name="Sprite" type="Sprite" parent="Bird1" index="0"]
-
-light_mask = 4
-rotation = 1.5708
-z_index = 3
-texture = ExtResource( 10 )
-offset = Vector2( -1, -2 )
-_sections_unfolded = [ "Animation", "Offset", "Visibility", "Z Index" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird1" index="1"]
-
-shape = SubResource( 3 )
-
-[node name="Area2D" type="Area2D" parent="Bird1" index="2"]
-
-editor/display_folded = true
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-_sections_unfolded = [ "Collision" ]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bird1/Area2D" index="0"]
-
-shape = SubResource( 3 )
 
 [node name="laser" type="Sprite" parent="." index="6"]
 
@@ -469,12 +480,12 @@ _sections_unfolded = [ "Region", "Transform", "Z Index" ]
 
 [connection signal="area_entered" from="cameraControl/LeftArea" to="Bird1" method="_on_LeftArea_area_entered"]
 
+[connection signal="visionBlock" from="Bird1" to="smokeScreen" method="_on_Bird1_visionBlock"]
+
 [connection signal="area_entered" from="Snake1/EnemyCollisionCheck" to="Snake1" method="_on_EnemyCollisionCheck_area_entered"]
 
 [connection signal="area_entered" from="Snake2/EnemyCollisionCheck" to="Snake2" method="_on_EnemyCollisionCheck_area_entered"]
 
 [connection signal="area_entered" from="Snake3/EnemyCollisionCheck" to="Snake3" method="_on_EnemyCollisionCheck_area_entered"]
-
-[connection signal="visionBlock" from="Bird1" to="smokeScreen" method="_on_Bird1_visionBlock"]
 
 

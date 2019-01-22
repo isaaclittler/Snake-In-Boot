@@ -5,6 +5,13 @@ const speed = 350
 const cameraHeight = 284
 const cameraWidth = 495
 
+export var left = ""
+export var right = ""
+export var a = ""
+export var b = ""
+export var x = ""
+export var y = ""
+
 var cameraX = 0
 var currRotationSpeed = rotationSpeed
 var currSpeed = speed
@@ -32,18 +39,18 @@ func _process(delta):
 func getInput():
 	rotationDir = 0
 	velocity = Vector2()
-	if Input.is_action_pressed("bird_move_left"):
+	if Input.is_action_pressed(left):
 		rotationDir -= 1
-	elif Input.is_action_pressed("bird_move_right"):
+	elif Input.is_action_pressed(right):
 		rotationDir += 1
 	#if Input.is_action_just_pressed("bird_ability_1")\
 	#and lasering == false:
 	#	rotation += PI
-	if Input.is_action_just_pressed("bird_ability_1")\
+	if Input.is_action_just_pressed(a)\
 	and lasering == false:
 		#print("pew pew")
 		emit_signal("visionBlock")
-	if Input.is_action_just_pressed("bird_ability_2"):
+	if Input.is_action_just_pressed(b):
 		ability3()
 	#if Input.is_action_just_pressed("bird_ability_4"):
 		

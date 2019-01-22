@@ -18,7 +18,8 @@ func furthestSnake():
 		#elif snake.position.x 
 	if (furthestSnake != null):
 		furthestX = furthestSnake.position.x
-		winningSnake = furthestSnake
+		winningSnake = furthestSnake.rightInput
+		winningSnake = winningSnake.substr(1,1)
 
 func _process(delta):
 	furthestSnake()
