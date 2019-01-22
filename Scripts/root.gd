@@ -4,15 +4,14 @@ extends Node
 # var a = 2
 export var lvlSelect = 1
 export var playerWinner = 0
+export var firstLoad = true
 var gameEnd
 var gameWinner
 var printing = ""
 var birdGamesWon = 0
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	firstLoad = false
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
@@ -64,6 +63,7 @@ func level_select(a):
 	lvlSelect = a
 	birdGamesWon = 0
 	printing = ""
+	randomize()
 	playerWinner = randi()%4
 	level_delete()
 	update_text()

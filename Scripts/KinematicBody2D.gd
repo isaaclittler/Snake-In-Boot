@@ -24,9 +24,8 @@ export var frozen = false
 onready var laser = get_node("../laser")
 onready var prelaser = get_node("../prelaser")
 
-#func _ready():
-	
-	#pass
+func _ready():
+	randomize()
 
 var velocity = Vector2()
 var rotationDir = 0

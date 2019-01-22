@@ -6,7 +6,7 @@ var cameraControl
 export var finishX = 3000
 export var winner = "snake wins"
 export var birdNumber = 0
-export var winningPlayer = 0
+export var winningPlayer = 4
 signal reset
 
 func _ready(): #set the finish point by object in here
@@ -28,7 +28,12 @@ func _ready(): #set the finish point by object in here
 	pass
 
 func setControllers():
-	birdNumber = get_parent().playerWinner
+	if get_parent().firstLoad == true:
+		randomize()
+		birdNumber = randi()%4
+	else:
+		birdNumber = get_parent().playerWinner
+	print("bird,",birdNumber)
 	var i = birdNumber + 1
 	var bird = get_child(1)
 	bird.left = str("p",birdNumber,"L")

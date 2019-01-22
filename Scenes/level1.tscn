@@ -29,13 +29,13 @@ custom_solver_bias = 0.0
 radius = 10.0
 height = 5.0
 
-[node name="level" type="Node" index="0"]
+[node name="level" type="Node"]
 
 script = ExtResource( 1 )
 finishX = 3000
 winner = "snake wins"
 birdNumber = 0
-winningPlayer = 0
+winningPlayer = 4
 
 [node name="cameraControl" type="Node2D" parent="." index="0"]
 
