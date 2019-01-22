@@ -26,7 +26,15 @@ func _process(delta):
 
 func _physics_process(delta):
 	velocity.y += delta * GRAVITY
-	if Input.is_action_pressed(leftInput):
+	if Input.is_action_pressed(leftInput)\
+	and ability == 5\
+	and is_on_floor():
+		velocity.x = -(BASE_SPEED + 100) 
+	elif Input.is_action_pressed(rightInput)\
+	and ability == 5\
+	and is_on_floor():
+		velocity.x =  BASE_SPEED + 100
+	elif Input.is_action_pressed(leftInput):
 		velocity.x = -BASE_SPEED
 	elif Input.is_action_pressed(rightInput):
 		velocity.x =  BASE_SPEED
