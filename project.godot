@@ -79,3 +79,6 @@ p3Y=[ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_na
 2d_physics/layer_3="snakes"
 2d_physics/layer_4="bird"
 2d_physics/layer_5="snakeKillZone"
+2d_physics/layer_6="snake1"
+2d_physics/layer_7="snake2"
+2d_physics/layer_8="snake3"

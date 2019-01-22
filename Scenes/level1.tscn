@@ -12,24 +12,24 @@
 [ext_resource path="res://Scenes/visionBlocker.gd" type="Script" id=10]
 [ext_resource path="res://Assets/lazer.png" type="Texture" id=11]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 16.0
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=2]
 
 custom_solver_bias = 0.0
 radius = 11.0
 height = 5.0
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=3]
 
 custom_solver_bias = 0.0
 radius = 10.0
 height = 5.0
 
-[node name="level" type="Node"]
+[node name="level" type="Node" index="0"]
 
 script = ExtResource( 1 )
 finishX = 3000
@@ -228,6 +228,7 @@ a = ""
 b = ""
 x = ""
 y = ""
+frozen = false
 
 [node name="Sprite" type="Sprite" parent="Bird1" index="0"]
 
@@ -240,7 +241,7 @@ _sections_unfolded = [ "Animation", "Offset", "Visibility", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bird1" index="1"]
 
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="Bird1" index="2"]
 
@@ -256,7 +257,7 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Bird1/Area2D" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Snake1" type="KinematicBody2D" parent="." index="2" groups=[
 "snakes",
@@ -273,7 +274,9 @@ _sections_unfolded = [ "Collision", "Transform", "Visibility" ]
 leftInput = ""
 rightInput = ""
 aInput = ""
+bInput = ""
 numAirJumps = 1
+ability = 0
 
 [node name="Sprite" type="Sprite" parent="Snake1" index="0"]
 
@@ -288,7 +291,7 @@ _sections_unfolded = [ "Region" ]
 modulate = Color( 0.174957, 0.246142, 0.710938, 1 )
 self_modulate = Color( 0.121185, 0.539404, 0.816406, 1 )
 position = Vector2( -3, 1 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="EnemyCollisionCheck" type="Area2D" parent="Snake1" index="2"]
@@ -298,7 +301,7 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision_layer = 0
+collision_layer = 32
 collision_mask = 25
 audio_bus_override = false
 audio_bus_name = "Master"
@@ -308,7 +311,7 @@ _sections_unfolded = [ "Collision" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snake1/EnemyCollisionCheck" index="0"]
 
 position = Vector2( -3, 1 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Snake2" type="KinematicBody2D" parent="." index="3" groups=[
@@ -327,7 +330,9 @@ _sections_unfolded = [ "Collision", "Transform" ]
 leftInput = ""
 rightInput = ""
 aInput = ""
+bInput = ""
 numAirJumps = 1
+ability = 0
 
 [node name="Sprite" type="Sprite" parent="Snake2" index="0"]
 
@@ -342,7 +347,7 @@ _sections_unfolded = [ "Region", "Z Index" ]
 modulate = Color( 0.174957, 0.246142, 0.710938, 1 )
 self_modulate = Color( 0.121185, 0.539404, 0.816406, 1 )
 position = Vector2( -3, 1 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="EnemyCollisionCheck" type="Area2D" parent="Snake2" index="2"]
@@ -352,7 +357,7 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision_layer = 0
+collision_layer = 64
 collision_mask = 25
 audio_bus_override = false
 audio_bus_name = "Master"
@@ -362,7 +367,7 @@ _sections_unfolded = [ "Collision" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snake2/EnemyCollisionCheck" index="0"]
 
 position = Vector2( -3, 1 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Snake3" type="KinematicBody2D" parent="." index="4" groups=[
@@ -381,7 +386,9 @@ _sections_unfolded = [ "Collision", "Transform", "Visibility" ]
 leftInput = ""
 rightInput = ""
 aInput = ""
+bInput = ""
 numAirJumps = 1
+ability = 0
 
 [node name="Sprite" type="Sprite" parent="Snake3" index="0"]
 
@@ -396,7 +403,7 @@ _sections_unfolded = [ "Region", "Z Index" ]
 modulate = Color( 0.174957, 0.246142, 0.710938, 1 )
 self_modulate = Color( 0.121185, 0.539404, 0.816406, 1 )
 position = Vector2( -3, 1 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="EnemyCollisionCheck" type="Area2D" parent="Snake3" index="2"]
@@ -406,7 +413,7 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision_layer = 0
+collision_layer = 128
 collision_mask = 25
 audio_bus_override = false
 audio_bus_name = "Master"
@@ -416,7 +423,7 @@ _sections_unfolded = [ "Collision" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snake3/EnemyCollisionCheck" index="0"]
 
 position = Vector2( -3, 1 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="smokeScreen" type="Sprite" parent="." index="5"]
