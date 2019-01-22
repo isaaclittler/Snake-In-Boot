@@ -6,6 +6,8 @@ export var aInput = ""
 export var bInput = ""
 export var numAirJumps = 1
 export var ability = 0
+export var spriteY = 0
+
 
 const GRAVITY = 250.0
 const BASE_SPEED = 200
@@ -15,6 +17,12 @@ onready var bird = get_node("../Bird1")
 
 var velocity = Vector2()
 var curAirJumps = 1
+var abilityTemp = ability
+
+func _process(delta):
+	if ability != abilityTemp:
+		updateSprite()
+		abilityTemp = ability
 
 func _physics_process(delta):
 	velocity.y += delta * GRAVITY
@@ -50,6 +58,11 @@ func useAbility():
 		print("ability 2")
 		bird.frozen = true
 		ability = 0
+
+func updateSprite():
+	var sprite = get_child(0)
+	var region = Rect2(ability * 32,spriteY,32,32)
+	sprite.set_region_rect(region)
 
 func _on_EnemyCollisionCheck_area_entered(area):
 	print("collision")
