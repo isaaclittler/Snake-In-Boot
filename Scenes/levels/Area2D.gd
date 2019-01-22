@@ -1,7 +1,7 @@
 extends Area2D
 
 # class member variables go here, for example:
-export var abilityType = 1
+export var abilityType = 5
 signal pickedUp
 
 func _ready():

@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/tiles2.res" type="TileSet" id=1]
-[ext_resource path="res://Assets/tileSet1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/itemBoxes.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/levels/itemBox.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/levels/Area2D.gd" type="Script" id=4]
 
-[node name="TileMap" type="TileMap" index="0"]
+[node name="TileMap" type="TileMap"]
 
 mode = 0
 tile_set = ExtResource( 1 )
@@ -118,7 +118,7 @@ polygon = PoolVector2Array( 16, -16, -16, -16, -16, 16, 16, 16 )
 position = Vector2( 1120, -224 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 32, 32 )
+region_rect = Rect2( 128, 0, 32, 32 )
 script = ExtResource( 3 )
 _sections_unfolded = [ "Region", "Transform" ]
 
@@ -135,7 +135,7 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 4 )
 _sections_unfolded = [ "Audio Bus", "Collision" ]
-abilityType = 1
+abilityType = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="itemBox4/Area2D" index="0"]
 
