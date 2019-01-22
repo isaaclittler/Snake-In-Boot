@@ -17,7 +17,10 @@ var currRotationSpeed = rotationSpeed
 var currSpeed = speed
 var tAbility3 = 5
 var dAbility3 = 0
+var tFreeze = 0
+var dFreeze = 1
 var lasering = false
+export var frozen = false
 onready var laser = get_node("../laser")
 onready var prelaser = get_node("../prelaser")
 
@@ -34,6 +37,11 @@ func _process(delta):
 	dAbility3 += delta
 	if lasering == true:
 		laser()
+	if frozen == true:
+		tFreeze += delta
+		if tFreeze > dFreeze:
+			frozen = false
+			tFreeze = 0
 	abilityReset()
 
 func getInput():
@@ -57,9 +65,10 @@ func getInput():
 
 func _physics_process(delta):
 	getInput()
-	rotation += rotationDir * currRotationSpeed * delta
-	velocity = Vector2(currSpeed,0).rotated(rotation)
-	move_and_slide(velocity)
+	if frozen == false:
+		rotation += rotationDir * currRotationSpeed * delta
+		velocity = Vector2(currSpeed,0).rotated(rotation)
+		move_and_slide(velocity)
 
 func abilityReset():
 	if dAbility3 > 3:

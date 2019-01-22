@@ -41,6 +41,7 @@ func setControllers():
 		snake.leftInput = str("p",i,"L")
 		snake.rightInput =  str("p",i,"R")
 		snake.aInput =  str("p",i,"A")
+		snake.bInput =  str("p",i,"B")
 		i += 1
 		if i > 3:
 			i = 0
