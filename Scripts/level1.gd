@@ -6,6 +6,7 @@ var cameraControl
 export var finishX = 3000
 export var winner = "snake wins"
 export var birdNumber = 0
+export var winningPlayer = 0
 signal reset
 
 func _ready(): #set the finish point by object in here
@@ -13,20 +14,21 @@ func _ready(): #set the finish point by object in here
 	if get_parent().lvlSelect == 1:
 		var loading = preload("res://Scenes/levels/lvl_1.tscn").instance()
 		add_child(loading)
-		print("1")
+		#print("1")
 	elif get_parent().lvlSelect == 2:
 		var loading = preload("res://Scenes/levels/lvl_2.tscn").instance()
 		add_child(loading)
-		print("2")
+		#print("2")
 	elif get_parent().lvlSelect == 3:
 		var loading = preload("res://Scenes/levels/lvl_3.tscn").instance()
 		add_child(loading)
-		print("2")
+		#print("3")
 	setControllers()
-	print("level loaded")
+	print(birdNumber,",level loaded")
 	pass
 
 func setControllers():
+	birdNumber = get_parent().playerWinner
 	var i = birdNumber + 1
 	var bird = get_child(1)
 	bird.left = str("p",birdNumber,"L")
@@ -53,6 +55,8 @@ func winCond():
 	cameraControl = get_child(0)
 	if (cameraControl.furthestX >= finishX):
 		print(cameraControl.winningSnake," snake wins")
+		winningPlayer = cameraControl.winningSnake.to_int()
+		#print(winningPlayer * 2)
 		emit_signal("reset")
 
 func _process(delta):

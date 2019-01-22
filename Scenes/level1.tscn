@@ -35,6 +35,7 @@ script = ExtResource( 1 )
 finishX = 3000
 winner = "snake wins"
 birdNumber = 0
+winningPlayer = 0
 
 [node name="cameraControl" type="Node2D" parent="." index="0"]
 
