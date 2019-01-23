@@ -48,7 +48,7 @@ func setControllers():
 		snake.aInput =  str("p",i,"A")
 		snake.bInput =  str("p",i,"B")
 		i += 1
-		if i > 3:
+		if i > 3: #trying 4, was 3
 			i = 0
 
 func winCond():
