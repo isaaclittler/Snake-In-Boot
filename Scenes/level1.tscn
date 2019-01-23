@@ -213,7 +213,6 @@ _sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
 
 [node name="Bird1" type="KinematicBody2D" parent="." index="1"]
 
-editor/display_folded = true
 light_mask = 4
 position = Vector2( 199, -27 )
 input_pickable = false
@@ -245,7 +244,6 @@ shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="Bird1" index="2"]
 
-editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
