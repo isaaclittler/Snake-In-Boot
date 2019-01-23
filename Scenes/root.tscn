@@ -98,6 +98,52 @@ text = "Level 3"
 flat = false
 align = 1
 
+[node name="Button4" type="Button" parent="LevelSelect" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 72.0
+margin_right = 58.0
+margin_bottom = 92.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "Level 4"
+flat = false
+align = 1
+
+[node name="Button5" type="Button" parent="LevelSelect" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 96.0
+margin_right = 58.0
+margin_bottom = 116.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "Level 5"
+flat = false
+align = 1
+
 [connection signal="reset" from="level" to="." method="_on_level_reset"]
 
 [connection signal="pressed" from="LevelSelect/Button" to="." method="_on_Button_pressed"]
@@ -105,5 +151,9 @@ align = 1
 [connection signal="pressed" from="LevelSelect/Button2" to="." method="_on_Button2_pressed"]
 
 [connection signal="pressed" from="LevelSelect/Button3" to="." method="_on_Button3_pressed"]
+
+[connection signal="pressed" from="LevelSelect/Button4" to="." method="_on_Button4_pressed"]
+
+[connection signal="pressed" from="LevelSelect/Button5" to="." method="_on_Button5_pressed"]
 
 

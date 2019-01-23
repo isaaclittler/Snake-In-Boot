@@ -8,21 +8,14 @@ export var winner = "snake wins"
 export var birdNumber = 0
 export var winningPlayer = 4
 signal reset
+var scene = ""
 
 func _ready(): #set the finish point by object in here
 	connect("reset", self, "root")
-	if get_parent().lvlSelect == 1:
-		var loading = preload("res://Scenes/levels/lvl_1.tscn").instance()
-		add_child(loading)
-		#print("1")
-	elif get_parent().lvlSelect == 2:
-		var loading = preload("res://Scenes/levels/lvl_2.tscn").instance()
-		add_child(loading)
-		#print("2")
-	elif get_parent().lvlSelect == 3:
-		var loading = preload("res://Scenes/levels/lvl_3.tscn").instance()
-		add_child(loading)
-		#print("3")
+	var i = get_parent().lvlSelect
+	scene = str("res://Scenes/levels/lvl_",i,".tscn")
+	var loading = load(scene).instance()
+	add_child(loading)
 	setControllers()
 	print(birdNumber,",level loaded")
 	pass

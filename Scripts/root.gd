@@ -5,6 +5,7 @@ extends Node
 export var lvlSelect = 1
 export var playerWinner = 0
 export var firstLoad = true
+var curLevel = 0
 var gameEnd
 var gameWinner
 var printing = ""
@@ -40,6 +41,8 @@ func game_win():
 			printing = ""
 		else:
 			printing = "bird win"
+			birdGamesWon = 0
+			lvlSelect = (randi()%4 + 1)
 	else:
 		birdGamesWon = 0
 		playerWinner = level.winningPlayer
@@ -78,3 +81,10 @@ func _on_Button2_pressed():
 
 func _on_Button3_pressed():
 	level_select(3)
+
+func _on_Button4_pressed():
+	level_select(4)
+
+
+func _on_Button5_pressed():
+	level_select(5)

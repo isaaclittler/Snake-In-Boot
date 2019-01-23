@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/levels/itemBox.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/levels/Area2D.gd" type="Script" id=3]
 
-[node name="freezeBox" type="Sprite" index="0"]
+[node name="wheelBox" type="Sprite"]
 
 position = Vector2( -192, -64 )
 texture = ExtResource( 1 )
