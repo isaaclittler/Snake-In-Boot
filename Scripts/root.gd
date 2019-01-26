@@ -37,7 +37,7 @@ func game_win():
 	if gameWinner == "bird win":
 		playerWinner = level.birdNumber
 		birdGamesWon += 1
-		if birdGamesWon < 5:
+		if birdGamesWon < 3:
 			printing = ""
 		else:
 			printing = "bird win"
