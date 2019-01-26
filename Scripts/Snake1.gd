@@ -70,8 +70,11 @@ func useAbility():
 		print("ability 2")
 		bird.frozen = true
 		ability = 0
-	if ability == 4:
-		pass
+	if ability == 3:
+		var platform = load("res://Scenes/abilities/redCarpet.tscn").instance()
+		platform.position = Vector2(self.position.x + 32,self.position.y + 30)
+		get_parent().add_child(platform)
+		ability = 0
 
 func updateSprite():
 	var sprite = get_child(0)

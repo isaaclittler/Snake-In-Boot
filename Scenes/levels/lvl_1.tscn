@@ -171,6 +171,35 @@ abilityType = 7
 build_mode = 0
 polygon = PoolVector2Array( 16, -16, -16, -16, -16, 16, 16, 16 )
 
+[node name="platformBox" type="Sprite" parent="." index="5"]
+
+position = Vector2( -128, -64 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 32, 32 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="Area2D" type="Area2D" parent="platformBox" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 0
+collision_mask = 4
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 4 )
+_sections_unfolded = [ "Audio Bus", "Collision", "Transform" ]
+abilityType = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platformBox/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 16, -16, -16, -16, -16, 16, 16, 16 )
+
 [connection signal="body_entered" from="itemBox/Area2D" to="itemBox/Area2D" method="_on_Area2D_body_entered"]
 
 [connection signal="pickedUp" from="itemBox/Area2D" to="itemBox" method="_on_Area2D_pickedUp"]
@@ -190,5 +219,9 @@ polygon = PoolVector2Array( 16, -16, -16, -16, -16, 16, 16, 16 )
 [connection signal="body_entered" from="moonBox/Area2D" to="moonBox/Area2D" method="_on_Area2D_body_entered"]
 
 [connection signal="pickedUp" from="moonBox/Area2D" to="moonBox" method="_on_Area2D_pickedUp"]
+
+[connection signal="body_entered" from="platformBox/Area2D" to="platformBox/Area2D" method="_on_Area2D_body_entered"]
+
+[connection signal="pickedUp" from="platformBox/Area2D" to="platformBox" method="_on_Area2D_pickedUp"]
 
 

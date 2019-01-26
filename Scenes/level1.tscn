@@ -29,7 +29,7 @@ custom_solver_bias = 0.0
 radius = 10.0
 height = 5.0
 
-[node name="level" type="Node" index="0"]
+[node name="level" type="Node"]
 
 script = ExtResource( 1 )
 finishX = 3000
@@ -258,6 +258,7 @@ shape = SubResource( 1 )
 "snakes",
 ]]
 
+editor/display_folded = true
 light_mask = 4
 input_pickable = false
 collision_layer = 4
@@ -270,7 +271,7 @@ rightInput = ""
 aInput = ""
 bInput = ""
 numAirJumps = 1
-ability = 0
+ability = 3
 spriteY = 0
 
 [node name="Sprite" type="Sprite" parent="Snake1" index="0"]
@@ -313,6 +314,7 @@ _sections_unfolded = [ "Transform" ]
 "snakes",
 ]]
 
+editor/display_folded = true
 light_mask = 4
 position = Vector2( -64, 0 )
 input_pickable = false
@@ -326,7 +328,7 @@ rightInput = ""
 aInput = ""
 bInput = ""
 numAirJumps = 1
-ability = 0
+ability = 3
 spriteY = 32
 
 [node name="Sprite" type="Sprite" parent="Snake2" index="0"]
@@ -381,7 +383,7 @@ rightInput = ""
 aInput = ""
 bInput = ""
 numAirJumps = 1
-ability = 0
+ability = 3
 spriteY = 64
 
 [node name="Sprite" type="Sprite" parent="Snake3" index="0"]
