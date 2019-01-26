@@ -5,6 +5,7 @@ extends Node
 export var lvlSelect = 1
 export var playerWinner = 0
 export var firstLoad = true
+export var snakeAbilities = 0
 var curLevel = 0
 var gameEnd
 var gameWinner
@@ -42,9 +43,11 @@ func game_win():
 		else:
 			printing = "bird win"
 			birdGamesWon = 0
+			snakeAbilities += 1
 			lvlSelect = (randi()%4 + 1)
 	else:
 		birdGamesWon = 0
+		snakeAbilities = 0
 		playerWinner = level.winningPlayer
 		printing = "snake win"
 	#print(playerWinner,"root")

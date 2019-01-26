@@ -9,6 +9,7 @@ script = ExtResource( 1 )
 lvlSelect = 1
 playerWinner = 0
 firstLoad = true
+snakeAbilities = 0
 
 [node name="level" parent="." index="0" instance=ExtResource( 2 )]
 
