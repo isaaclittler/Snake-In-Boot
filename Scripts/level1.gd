@@ -21,6 +21,7 @@ func _ready(): #set the finish point by object in here
 	pass
 
 func setControllers():
+	var snakeAbi = get_parent().snakeAbilities
 	if get_parent().firstLoad == true:
 		randomize()
 		birdNumber = randi()%4
@@ -36,6 +37,14 @@ func setControllers():
 	bird.x = str("p",birdNumber,"X") 
 	bird.y = str("p",birdNumber,"Y") 
 	for snake in get_tree().get_nodes_in_group("snakes"):
+		if snakeAbi > 0:
+			if snakeAbi > 3:
+				snakeAbi = 3
+			var ability = randi()%3 + 1
+			if ability == 3:
+				ability = 5
+			snake.ability = ability
+			snakeAbi += -1
 		snake.leftInput = str("p",i,"L")
 		snake.rightInput =  str("p",i,"R")
 		snake.aInput =  str("p",i,"A")
