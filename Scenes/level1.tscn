@@ -29,7 +29,7 @@ custom_solver_bias = 0.0
 radius = 10.0
 height = 5.0
 
-[node name="level" type="Node"]
+[node name="level" type="Node" index="0"]
 
 script = ExtResource( 1 )
 finishX = 3000
@@ -39,7 +39,6 @@ winningPlayer = 4
 
 [node name="cameraControl" type="Node2D" parent="." index="0"]
 
-editor/display_folded = true
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 furthestX = 0
@@ -73,8 +72,6 @@ _sections_unfolded = [ "Drag Margin", "Limit", "Offset", "Smoothing", "Transform
 
 [node name="Area2D" type="Area2D" parent="cameraControl" index="1"]
 
-editor/display_folded = true
-visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -89,7 +86,7 @@ _sections_unfolded = [ "Collision" ]
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="cameraControl/Area2D" index="0"]
 
 build_mode = 1
-polygon = PoolVector2Array( -508, -296, -508, 296, 508, 296, 508, -296 )
+polygon = PoolVector2Array( -500, -290, -500, 290, 500, 290, 500, -290 )
 
 [node name="TopArea" type="Area2D" parent="cameraControl" index="2"]
 
@@ -169,8 +166,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Fire1" type="Sprite" parent="cameraControl" index="6"]
 
-position = Vector2( -2359.5, 4 )
-scale = Vector2( 5.875, 19.5 )
+position = Vector2( -2101.5, 4 )
+scale = Vector2( 5.375, 19.5 )
 z_index = 4
 texture = ExtResource( 3 )
 offset = Vector2( 500, 0 )
@@ -180,8 +177,8 @@ _sections_unfolded = [ "Offset", "Region", "Z Index" ]
 
 [node name="Fire2" type="Sprite" parent="cameraControl" index="7"]
 
-position = Vector2( 1270.5, 4.00002 )
-scale = Vector2( 3.625, 19.25 )
+position = Vector2( 1012.5, 4.00002 )
+scale = Vector2( 3.125, 19.25 )
 z_index = 4
 texture = ExtResource( 3 )
 offset = Vector2( -500, 0 )
@@ -191,8 +188,8 @@ _sections_unfolded = [ "Offset", "Region", "Z Index" ]
 
 [node name="Fire3" type="Sprite" parent="cameraControl" index="8"]
 
-position = Vector2( 35, 994 )
-scale = Vector2( 38.9375, 4.5 )
+position = Vector2( 35, 934.751 )
+scale = Vector2( 38.9375, 4.3125 )
 z_index = 5
 texture = ExtResource( 3 )
 offset = Vector2( 0, -300 )
@@ -202,8 +199,8 @@ _sections_unfolded = [ "Offset", "Region", "Z Index" ]
 
 [node name="Fire4" type="Sprite" parent="cameraControl" index="9"]
 
-position = Vector2( 34, -745.5 )
-scale = Vector2( 39, 3.625 )
+position = Vector2( 34, -686.251 )
+scale = Vector2( 39, 3.4375 )
 z_index = 5
 texture = ExtResource( 3 )
 offset = Vector2( 0, 300 )
@@ -213,7 +210,6 @@ _sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
 
 [node name="Bird1" type="KinematicBody2D" parent="." index="1"]
 
-editor/display_folded = true
 light_mask = 4
 position = Vector2( 199, -27 )
 input_pickable = false

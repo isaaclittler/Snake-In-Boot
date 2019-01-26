@@ -7,10 +7,7 @@ path="res://.import/smokeScreen.png-4c3a87ef9b8093e1b3ff50ff6a5537dc.stex"
 [deps]
 
 source_file="res://Assets/smokeScreen.png"
-source_md5="1c72348500af593c05552b4db54ebc75"
-
 dest_files=[ "res://.import/smokeScreen.png-4c3a87ef9b8093e1b3ff50ff6a5537dc.stex" ]
-dest_md5="c347ef2ffddb51cf967e43da12092fb6"
 
 [params]
 
