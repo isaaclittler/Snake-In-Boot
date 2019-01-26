@@ -21,8 +21,10 @@ var tFreeze = 0
 var dFreeze = 1
 var lasering = false
 export var frozen = false
-onready var laser = get_node("../laser")
-onready var prelaser = get_node("../prelaser")
+var laser
+var prelaser
+var laserPart2
+var tSmoke = 2.5
 
 func _ready():
 	randomize()
@@ -32,6 +34,7 @@ var rotationDir = 0
 signal visionBlock
 
 func _process(delta):
+	tSmoke += delta
 	tAbility3 += delta
 	dAbility3 += delta
 	if lasering == true:
@@ -54,9 +57,12 @@ func getInput():
 	#and lasering == false:
 	#	rotation += PI
 	if Input.is_action_just_pressed(a)\
-	and lasering == false:
+	and lasering == false\
+	and tSmoke >= 2.5:
 		#print("pew pew")
-		emit_signal("visionBlock")
+		var smoke = preload("res://Scenes/abilities/smokeScreen.tscn").instance()
+		get_parent().add_child(smoke)
+		tSmoke = 0
 	if Input.is_action_just_pressed(b):
 		ability3()
 	#if Input.is_action_just_pressed("bird_ability_4"):
@@ -74,11 +80,15 @@ func abilityReset():
 		currRotationSpeed = rotationSpeed
 		currSpeed = speed
 		lasering = false
-		laser.position.y = -5000
+		#laser.position.y = -5000
 
 func ability3():
 	if tAbility3 > 5:
 		print("ability 3")
+		if lasering == false:
+			prelaser = preload("res://Scenes/abilities/prelaser.tscn").instance()
+			add_child(prelaser)
+		laserPart2 = false
 		currRotationSpeed = .5
 		currSpeed = 100
 		tAbility3 = 0
@@ -86,13 +96,15 @@ func ability3():
 		lasering = true
 
 func laser():
-	if tAbility3 < 1:
-		prelaser.position = self.position
-		prelaser.rotation = self.rotation + PI * .5
-	else:
-		laser.position = self.position
-		laser.rotation = self.rotation + PI * .5
-		prelaser.position.y = 5000
+	if tAbility3 >= 1\
+	and laserPart2 == false:
+		prelaser.queue_free()
+		laser = preload("res://Scenes/abilities/laser.tscn").instance()
+		add_child(laser)
+		laserPart2 = true
+	if tAbility3 >=  3:
+		laser.queue_free()
+		lasering == false
 
 func _on_TopArea_area_entered(area):
 	self.position = Vector2(self.position.x, cameraHeight)

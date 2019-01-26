@@ -33,6 +33,7 @@ func update_text():
 		gameEnd.text = printing
 
 func game_win():
+	var birdScreen = "bird win x %d"
 	var level = get_node("level")
 	gameWinner = level.winner
 	if gameWinner == "bird win":
@@ -41,7 +42,10 @@ func game_win():
 		if birdGamesWon < 3:
 			printing = ""
 		else:
-			printing = "bird win"
+			if snakeAbilities > 0:
+				printing = birdScreen % snakeAbilities
+			else:
+				printing = "bird win"
 			birdGamesWon = 0
 			snakeAbilities += 1
 			lvlSelect = (randi()%4 + 1)
@@ -66,6 +70,7 @@ func level_load():
 	add_child(gameEnd)
 
 func level_select(a):
+	snakeAbilities = 0
 	lvlSelect = a
 	birdGamesWon = 0
 	printing = ""

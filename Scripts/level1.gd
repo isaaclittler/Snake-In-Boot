@@ -40,8 +40,8 @@ func setControllers():
 		if snakeAbi > 0:
 			if snakeAbi > 3:
 				snakeAbi = 3
-			var ability = randi()%3 + 1
-			if ability == 3:
+			var ability = randi()%4 + 1
+			if ability == 4:
 				ability = 5
 			snake.ability = ability
 			snakeAbi += -1
