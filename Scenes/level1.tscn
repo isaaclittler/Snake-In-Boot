@@ -31,7 +31,6 @@ height = 5.0
 
 [node name="level" type="Node" index="0"]
 
-editor/display_folded = true
 script = ExtResource( 1 )
 finishX = 3000
 winner = "snake wins"

@@ -25,9 +25,10 @@ func _process(delta):
 		abilityTemp = ability
 
 func _physics_process(delta):
-	if ability == 7:
+	if ability == 7\
+	and is_on_floor() != true:
 		velocity.y += delta * GRAVITY * .5
-	else:
+	elif is_on_floor() != true:
 		velocity.y += delta * GRAVITY
 	if Input.is_action_pressed(leftInput)\
 	and ability == 5\
