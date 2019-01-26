@@ -7,10 +7,7 @@ path="res://.import/itemBoxes.png-2b8da958c461729fe994e73a15ba6bd3.stex"
 [deps]
 
 source_file="res://Assets/itemBoxes.png"
-source_md5="8bf79453eb3547e0f647e1994ce68719"
-
 dest_files=[ "res://.import/itemBoxes.png-2b8da958c461729fe994e73a15ba6bd3.stex" ]
-dest_md5="c1e44fbaaf13d32dcdb67f8a057293ba"
 
 [params]
 
