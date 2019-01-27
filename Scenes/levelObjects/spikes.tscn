@@ -21,10 +21,16 @@ collision_mask = 4
 audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Collision" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
 
 build_mode = 1
 polygon = PoolVector2Array( -16, 16, -16, 12, -10, 2, 10, 2, 16, 12, 16, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 
