@@ -2,6 +2,8 @@ extends Node
 
 # class member variables go here, for example:
 # var a = 2
+const numLevels = 3
+
 export var lvlSelect = 1
 export var playerWinner = 0
 export var firstLoad = true
@@ -48,7 +50,7 @@ func game_win():
 				printing = "bird win"
 			birdGamesWon = 0
 			snakeAbilities += 1
-			lvlSelect = (randi()%4 + 1)
+			lvlSelect = (randi()%numLevels + 1)
 	else:
 		birdGamesWon = 0
 		snakeAbilities = 0
