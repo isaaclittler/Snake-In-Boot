@@ -19,10 +19,13 @@ var velocity = Vector2()
 var curAirJumps = 1
 var abilityTemp = ability
 
+
+
 func _process(delta):
 	if ability != abilityTemp:
 		updateSprite()
 		abilityTemp = ability
+	updateSprite()
 
 func _physics_process(delta):
 	if ability == 7\
