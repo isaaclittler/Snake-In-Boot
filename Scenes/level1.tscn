@@ -15,6 +15,7 @@ finishedLoading = 0
 
 [node name="cameraControl" type="Node2D" parent="." index="0"]
 
+editor/display_folded = true
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 furthestX = 0

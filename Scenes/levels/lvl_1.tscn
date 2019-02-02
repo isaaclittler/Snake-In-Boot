@@ -30,8 +30,6 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="items" type="Node2D" parent="." index="0"]
 
-editor/display_folded = true
-
 [node name="itemBox" type="Sprite" parent="items" index="0"]
 
 editor/display_folded = true
@@ -205,7 +203,7 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 4 )
 _sections_unfolded = [ "Audio Bus", "Collision", "Transform" ]
-abilityType = 3
+abilityType = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="items/platformBox/Area2D" index="0"]
 
@@ -213,6 +211,8 @@ build_mode = 0
 polygon = PoolVector2Array( 16, -16, -16, -16, -16, 16, 16, 16 )
 
 [node name="objects" type="Node2D" parent="." index="1"]
+
+editor/display_folded = true
 
 [node name="Spike" type="Sprite" parent="objects" index="0"]
 
