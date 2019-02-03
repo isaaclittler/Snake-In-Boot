@@ -1,7 +1,7 @@
 extends Node
 
 const numLevels = 3
-const numBosses = 2
+const numBosses = 3
 
 export var p0Boss = 0
 export var p1Boss = 0

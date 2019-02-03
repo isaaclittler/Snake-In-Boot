@@ -1,5 +1,4 @@
 extends KinematicBody2D
-
 const cameraHeight = 284
 const cameraWidth = 495
 const placementOffset = 5
@@ -30,7 +29,6 @@ func _process(delta):
 		if tFreeze > dFreeze:
 			frozen = false
 			tFreeze = 0
-	abilityReset()
 	birdTeleport()
 
 func birdTeleport():
@@ -50,11 +48,9 @@ func birdTeleport():
 		print("left")
 
 func getInput():
-	if Input.is_action_pressed(left)\
-	and is_on_floor() == false:
+	if Input.is_action_pressed(left):
 		move(-1)
-	elif Input.is_action_pressed(right)\
-	and is_on_floor() == false:
+	elif Input.is_action_pressed(right):
 		move(1)
 	else:
 		move(0)
@@ -67,7 +63,10 @@ func getInput():
 func _physics_process(delta):
 	getInput()
 	if frozen == false:
-		velocity.y += delta * GRAVITY
+		if velocity.y < GRAVITY * 1.5:
+			velocity.y += delta * GRAVITY
+		if (is_on_ceiling()):
+			velocity.y += JUMP_SPEED / 2
 		move_and_slide(velocity, Vector2(0, -1))
 
 
@@ -82,7 +81,3 @@ func move(direction):
 		velocity.x = -speed
 	else:
 		velocity.x = 0
-
-func abilityReset():
-	pass
-

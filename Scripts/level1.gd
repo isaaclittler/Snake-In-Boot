@@ -40,8 +40,11 @@ func load_boss():
 	if bossNumber == 0: #load bird
 		loading = load("res://Scenes/characters/Bird1.tscn").instance()
 		add_child(loading)
-	if bossNumber == 1:
+	elif bossNumber == 1:
 		loading =  load("res://Scenes/characters/Frog.tscn").instance()
+		add_child(loading)
+	elif bossNumber == 2:
+		loading =  load("res://Scenes/characters/Worm.tscn").instance()
 		add_child(loading)
 
 func load_snakes():
