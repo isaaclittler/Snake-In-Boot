@@ -1,30 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/level1.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Node2D.gd" type="Script" id=2]
-[ext_resource path="res://Assets/tileSet2.png" type="Texture" id=3]
-[ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=4]
-[ext_resource path="res://Assets/bird1.png" type="Texture" id=5]
-[ext_resource path="res://Scripts/Snake1.gd" type="Script" id=6]
-[ext_resource path="res://Assets/snake1.png" type="Texture" id=7]
-[ext_resource path="res://Scripts/EnemyCollisionCheck.gd" type="Script" id=8]
-
-[sub_resource type="CircleShape2D" id=1]
-
-custom_solver_bias = 0.0
-radius = 16.0
-
-[sub_resource type="CapsuleShape2D" id=2]
-
-custom_solver_bias = 0.0
-radius = 11.0
-height = 5.0
-
-[sub_resource type="CapsuleShape2D" id=3]
-
-custom_solver_bias = 0.0
-radius = 10.0
-height = 5.0
+[ext_resource path="res://Assets/boss.png" type="Texture" id=3]
+[ext_resource path="res://Assets/tileSet2.png" type="Texture" id=4]
 
 [node name="level" type="Node"]
 
@@ -33,12 +12,15 @@ finishX = 3000
 winner = "snake wins"
 birdNumber = 0
 winningPlayer = 4
+finishedLoading = 0
 
 [node name="cameraControl" type="Node2D" parent="." index="0"]
 
-editor/display_folded = true
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
 furthestX = 0
 winningSnake = "test"
 
@@ -67,6 +49,9 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Drag Margin", "Limit", "Offset", "Smoothing", "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Area2D" type="Area2D" parent="cameraControl" index="1"]
 
@@ -80,94 +65,60 @@ collision_mask = 0
 audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Collision" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="cameraControl/Area2D" index="0"]
 
 build_mode = 1
 polygon = PoolVector2Array( -500, -290, -500, 290, 500, 290, 500, -290 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="TopArea" type="Area2D" parent="cameraControl" index="2"]
+[node name="player0Boss" type="Sprite" parent="cameraControl" index="2"]
 
-editor/display_folded = true
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_mask = 8
-audio_bus_override = false
-audio_bus_name = "Master"
-_sections_unfolded = [ "Collision" ]
+position = Vector2( -480, -270 )
+z_index = 10
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+_sections_unfolded = [ "Region", "Z Index" ]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cameraControl/TopArea" index="0"]
+[node name="player1Boss" type="Sprite" parent="cameraControl" index="3"]
 
-build_mode = 0
-polygon = PoolVector2Array( 512, -300, 536, -320, -528, -320, -512, -304 )
+position = Vector2( 480, -270 )
+z_index = 10
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+_sections_unfolded = [ "Region", "Z Index" ]
 
-[node name="BotArea" type="Area2D" parent="cameraControl" index="3"]
+[node name="player2Boss" type="Sprite" parent="cameraControl" index="4"]
 
-editor/display_folded = true
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_mask = 8
-audio_bus_override = false
-audio_bus_name = "Master"
-_sections_unfolded = [ "Collision" ]
+position = Vector2( -480, 270 )
+z_index = 10
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+_sections_unfolded = [ "Region", "Z Index" ]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cameraControl/BotArea" index="0"]
+[node name="player3Boss" type="Sprite" parent="cameraControl" index="5"]
 
-rotation = 3.14159
-build_mode = 0
-polygon = PoolVector2Array( 510, -300, 534, -320, -532, -320, -512, -300 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="RightArea" type="Area2D" parent="cameraControl" index="4"]
-
-editor/display_folded = true
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_mask = 8
-audio_bus_override = false
-audio_bus_name = "Master"
-_sections_unfolded = [ "Collision" ]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cameraControl/RightArea" index="0"]
-
-build_mode = 0
-polygon = PoolVector2Array( 512, -296, 764, -516, 762, 560, 512, 296 )
-
-[node name="LeftArea" type="Area2D" parent="cameraControl" index="5"]
-
-editor/display_folded = true
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_mask = 8
-audio_bus_override = false
-audio_bus_name = "Master"
-_sections_unfolded = [ "Collision" ]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cameraControl/LeftArea" index="0"]
-
-rotation = 3.14159
-build_mode = 0
-polygon = PoolVector2Array( 512, -300, 812.001, -543.998, 809.999, 524.002, 512, 300 )
-_sections_unfolded = [ "Transform" ]
+position = Vector2( 480, 270 )
+z_index = 10
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+_sections_unfolded = [ "Region", "Z Index" ]
 
 [node name="Fire1" type="Sprite" parent="cameraControl" index="6"]
 
 position = Vector2( -2101.5, 4 )
 scale = Vector2( 5.375, 19.5 )
 z_index = 4
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 offset = Vector2( 500, 0 )
 region_enabled = true
 region_rect = Rect2( 341, 1, 32, 32 )
@@ -178,7 +129,7 @@ _sections_unfolded = [ "Offset", "Region", "Z Index" ]
 position = Vector2( 1012.5, 4.00002 )
 scale = Vector2( 3.125, 19.25 )
 z_index = 4
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 offset = Vector2( -500, 0 )
 region_enabled = true
 region_rect = Rect2( 341, 1, 32, 32 )
@@ -189,7 +140,7 @@ _sections_unfolded = [ "Offset", "Region", "Z Index" ]
 position = Vector2( 35, 934.751 )
 scale = Vector2( 38.9375, 4.3125 )
 z_index = 5
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 offset = Vector2( 0, -300 )
 region_enabled = true
 region_rect = Rect2( 341, 1, 32, 32 )
@@ -200,240 +151,10 @@ _sections_unfolded = [ "Offset", "Region", "Z Index" ]
 position = Vector2( 34, -686.251 )
 scale = Vector2( 39, 3.4375 )
 z_index = 5
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 offset = Vector2( 0, 300 )
 region_enabled = true
 region_rect = Rect2( 341, 1, 32, 32 )
 _sections_unfolded = [ "Offset", "Region", "Transform", "Z Index" ]
-
-[node name="Bird1" type="KinematicBody2D" parent="." index="1"]
-
-editor/display_folded = true
-light_mask = 4
-position = Vector2( 199, -27 )
-input_pickable = false
-collision_layer = 8
-collision_mask = 1
-collision/safe_margin = 0.08
-script = ExtResource( 4 )
-_sections_unfolded = [ "Collision", "Visibility", "collision" ]
-left = ""
-right = ""
-a = ""
-b = ""
-x = ""
-y = ""
-frozen = false
-
-[node name="Sprite" type="Sprite" parent="Bird1" index="0"]
-
-light_mask = 4
-rotation = 1.5708
-z_index = 3
-texture = ExtResource( 5 )
-offset = Vector2( -1, -2 )
-_sections_unfolded = [ "Animation", "Offset", "Visibility", "Z Index" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird1" index="1"]
-
-shape = SubResource( 1 )
-
-[node name="Area2D" type="Area2D" parent="Bird1" index="2"]
-
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-_sections_unfolded = [ "Collision" ]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bird1/Area2D" index="0"]
-
-shape = SubResource( 1 )
-
-[node name="Snake1" type="KinematicBody2D" parent="." index="2" groups=[
-"snakes",
-]]
-
-editor/display_folded = true
-light_mask = 4
-input_pickable = false
-collision_layer = 4
-collision_mask = 6
-collision/safe_margin = 0.08
-script = ExtResource( 6 )
-_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
-leftInput = ""
-rightInput = ""
-aInput = ""
-bInput = ""
-numAirJumps = 1
-ability = 0
-spriteY = 1
-
-[node name="Sprite" type="Sprite" parent="Snake1" index="0"]
-
-z_index = 1
-texture = ExtResource( 7 )
-region_enabled = true
-region_rect = Rect2( 0, 1, 32, 32 )
-_sections_unfolded = [ "Animation", "Region", "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Snake1" index="1"]
-
-modulate = Color( 0.174957, 0.246142, 0.710938, 1 )
-self_modulate = Color( 0.121185, 0.539404, 0.816406, 1 )
-position = Vector2( -3, 1 )
-shape = SubResource( 2 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="EnemyCollisionCheck" type="Area2D" parent="Snake1" index="2"]
-
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 32
-collision_mask = 25
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 8 )
-_sections_unfolded = [ "Collision" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Snake1/EnemyCollisionCheck" index="0"]
-
-position = Vector2( -3, 1 )
-shape = SubResource( 3 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Snake2" type="KinematicBody2D" parent="." index="3" groups=[
-"snakes",
-]]
-
-editor/display_folded = true
-light_mask = 4
-position = Vector2( -64, 0 )
-input_pickable = false
-collision_layer = 4
-collision_mask = 6
-collision/safe_margin = 0.08
-script = ExtResource( 6 )
-_sections_unfolded = [ "Collision", "Transform" ]
-leftInput = ""
-rightInput = ""
-aInput = ""
-bInput = ""
-numAirJumps = 1
-ability = 0
-spriteY = 33
-
-[node name="Sprite" type="Sprite" parent="Snake2" index="0"]
-
-z_index = 1
-texture = ExtResource( 7 )
-region_enabled = true
-region_rect = Rect2( 0, 33, 32, 32 )
-_sections_unfolded = [ "Region", "Z Index" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Snake2" index="1"]
-
-modulate = Color( 0.174957, 0.246142, 0.710938, 1 )
-self_modulate = Color( 0.121185, 0.539404, 0.816406, 1 )
-position = Vector2( -3, 1 )
-shape = SubResource( 2 )
-
-[node name="EnemyCollisionCheck" type="Area2D" parent="Snake2" index="2"]
-
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 64
-collision_mask = 25
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 8 )
-_sections_unfolded = [ "Collision" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Snake2/EnemyCollisionCheck" index="0"]
-
-position = Vector2( -3, 1 )
-shape = SubResource( 3 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Snake3" type="KinematicBody2D" parent="." index="4" groups=[
-"snakes",
-]]
-
-editor/display_folded = true
-light_mask = 4
-position = Vector2( 0, -64 )
-input_pickable = false
-collision_layer = 4
-collision_mask = 6
-collision/safe_margin = 0.08
-script = ExtResource( 6 )
-_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
-leftInput = ""
-rightInput = ""
-aInput = ""
-bInput = ""
-numAirJumps = 1
-ability = 0
-spriteY = 65
-
-[node name="Sprite" type="Sprite" parent="Snake3" index="0"]
-
-z_index = 1
-texture = ExtResource( 7 )
-region_enabled = true
-region_rect = Rect2( 0, 64, 32, 32 )
-_sections_unfolded = [ "Region", "Z Index" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Snake3" index="1"]
-
-modulate = Color( 0.174957, 0.246142, 0.710938, 1 )
-self_modulate = Color( 0.121185, 0.539404, 0.816406, 1 )
-position = Vector2( -3, 1 )
-shape = SubResource( 2 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="EnemyCollisionCheck" type="Area2D" parent="Snake3" index="2"]
-
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 128
-collision_mask = 25
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 8 )
-_sections_unfolded = [ "Collision" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Snake3/EnemyCollisionCheck" index="0"]
-
-position = Vector2( -3, 1 )
-shape = SubResource( 3 )
-_sections_unfolded = [ "Transform" ]
-
-[connection signal="area_entered" from="cameraControl/TopArea" to="Bird1" method="_on_TopArea_area_entered"]
-
-[connection signal="area_entered" from="cameraControl/BotArea" to="Bird1" method="_on_BotArea_area_entered"]
-
-[connection signal="area_entered" from="cameraControl/RightArea" to="Bird1" method="_on_RightArea_area_entered"]
-
-[connection signal="area_entered" from="cameraControl/LeftArea" to="Bird1" method="_on_LeftArea_area_entered"]
-
-[connection signal="area_entered" from="Snake1/EnemyCollisionCheck" to="Snake1" method="_on_EnemyCollisionCheck_area_entered"]
-
-[connection signal="area_entered" from="Snake2/EnemyCollisionCheck" to="Snake2" method="_on_EnemyCollisionCheck_area_entered"]
-
-[connection signal="area_entered" from="Snake3/EnemyCollisionCheck" to="Snake3" method="_on_EnemyCollisionCheck_area_entered"]
 
 

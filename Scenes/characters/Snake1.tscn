@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Snake1.gd" type="Script" id=1]
+[ext_resource path="res://Assets/snake1.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/EnemyCollisionCheck.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 11.0
+height = 5.0
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 10.0
+height = 5.0
+
+[node name="Snake1" type="KinematicBody2D" groups=[
+"snakes",
+]]
+
+light_mask = 4
+input_pickable = false
+collision_layer = 4
+collision_mask = 6
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
+leftInput = ""
+rightInput = ""
+aInput = ""
+bInput = ""
+numAirJumps = 1
+ability = 0
+spriteY = 1
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+z_index = 1
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 1, 32, 32 )
+_sections_unfolded = [ "Animation", "Region", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+modulate = Color( 0.174957, 0.246142, 0.710938, 1 )
+self_modulate = Color( 0.121185, 0.539404, 0.816406, 1 )
+position = Vector2( -3, 1 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="EnemyCollisionCheck" type="Area2D" parent="." index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 32
+collision_mask = 25
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 3 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCollisionCheck" index="0"]
+
+position = Vector2( -3, 1 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="area_entered" from="EnemyCollisionCheck" to="." method="_on_EnemyCollisionCheck_area_entered"]
+
+

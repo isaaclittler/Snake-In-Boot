@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Frog.gd" type="Script" id=1]
+[ext_resource path="res://Assets/boss.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 12.5
+
+[node name="Frog" type="KinematicBody2D" index="0"]
+
+light_mask = 4
+position = Vector2( 199, -27 )
+input_pickable = false
+collision_layer = 24
+collision_mask = 2
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Transform", "Visibility", "collision" ]
+left = ""
+right = ""
+a = ""
+b = ""
+x = ""
+y = ""
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+light_mask = 4
+z_index = 3
+texture = ExtResource( 2 )
+offset = Vector2( -1, -2 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 32, 32 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( -1, -1 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Area2D" type="Area2D" parent="." index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 8
+collision_mask = 0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" index="0"]
+
+position = Vector2( -1, -1 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+

@@ -22,6 +22,6 @@ func furthestSnake():
 		winningSnake = winningSnake.substr(1,1)
 
 func _process(delta):
-	furthestSnake()
+	if get_parent().finishedLoading == 1:
+		furthestSnake()
 	self.position = (Vector2(furthestX,0))
-	pass

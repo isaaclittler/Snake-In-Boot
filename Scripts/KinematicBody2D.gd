@@ -4,6 +4,7 @@ const rotationSpeed = 2
 const speed = 350
 const cameraHeight = 284
 const cameraWidth = 495
+const placementOffset = 5
 
 export var left = ""
 export var right = ""
@@ -25,13 +26,11 @@ var laser
 var prelaser
 var laserPart2
 var tSmoke = 2.5
+var velocity
+var rotationDir
 
 func _ready():
-	randomize()
-
-var velocity = Vector2()
-var rotationDir = 0
-signal visionBlock
+	pass
 
 func _process(delta):
 	tSmoke += delta
@@ -45,6 +44,23 @@ func _process(delta):
 			frozen = false
 			tFreeze = 0
 	abilityReset()
+	birdTeleport()
+
+func birdTeleport():
+	if self.position.y < -cameraHeight: #top
+		self.position = Vector2(self.position.x, cameraHeight)
+		print("top")
+	if self.position.y > cameraHeight:#bot
+		self.position = Vector2(self.position.x, -cameraHeight)
+		print("bot")
+	if get_node("../cameraControl").position.x < (self.position.x - cameraWidth):#right
+		cameraX = get_node("../cameraControl").position.x
+		self.position = Vector2(cameraX-(cameraWidth)+placementOffset,self.position.y)
+		print("right")
+	if get_node("../cameraControl").position.x > (self.position.x + cameraWidth): #left
+		cameraX = get_node("../cameraControl").position.x
+		self.position = Vector2(cameraX+(cameraWidth)-placementOffset,self.position.y)
+		print("left")
 
 func getInput():
 	rotationDir = 0
@@ -65,8 +81,6 @@ func getInput():
 		tSmoke = 0
 	if Input.is_action_just_pressed(b):
 		ability3()
-	#if Input.is_action_just_pressed("bird_ability_4"):
-		
 
 func _physics_process(delta):
 	getInput()
@@ -106,24 +120,3 @@ func laser():
 		laser.queue_free()
 		lasering == false
 
-func _on_TopArea_area_entered(area):
-	self.position = Vector2(self.position.x, cameraHeight)
-	print("top")
-
-
-func _on_BotArea_area_entered(area):
-	self.position = Vector2(self.position.x, -cameraHeight)
-	print("bot")
-
-
-func _on_RightArea_area_entered(area):
-	cameraX = get_node("../cameraControl").position.x
-	self.position = Vector2(cameraX-(cameraWidth),self.position.y)
-	print("right")
-
-
-
-func _on_LeftArea_area_entered(area):
-	cameraX = get_node("../cameraControl").position.x
-	self.position = Vector2(cameraX+(cameraWidth),self.position.y)
-	print("left")
