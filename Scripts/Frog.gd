@@ -68,11 +68,11 @@ func getInput():
 		move(1)
 	else:
 		move(0)
-	if Input.is_action_just_pressed(left)\
-	and is_on_floor() == true:
+	if Input.is_action_pressed(left)\
+	and Input.is_action_just_pressed(b):
 		tounge(-1)
-	elif Input.is_action_just_pressed(right)\
-	and is_on_floor() == true:
+	elif Input.is_action_pressed(right)\
+	and Input.is_action_just_pressed(b):
 		tounge(1)
 	elif Input.is_action_just_pressed(b)\
 	and is_on_floor() == true:

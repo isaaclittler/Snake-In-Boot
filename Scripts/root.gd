@@ -29,26 +29,29 @@ func bossSelect():
 		p0Boss += 1
 		if p0Boss >= numBosses:
 			p0Boss = 0
-		var region = Rect2(p0Boss * 32,0,32,32)
-		get_node("level/cameraControl/player0Boss").set_region_rect(region)
 	if Input.is_action_just_pressed("p1Y"):
 		p1Boss += 1
 		if p1Boss >= numBosses:
 			p1Boss = 0
-		var region = Rect2(p1Boss * 32,0,32,32)
-		get_node("level/cameraControl/player1Boss").set_region_rect(region)
 	if Input.is_action_just_pressed("p2Y"):
 		p2Boss += 1
 		if p2Boss >= numBosses:
 			p2Boss = 0
-		var region = Rect2(p2Boss * 32,0,32,32)
-		get_node("level/cameraControl/player2Boss").set_region_rect(region)
 	if Input.is_action_just_pressed("p3Y"):
 		p3Boss += 1
 		if p3Boss >= numBosses:
 			p3Boss = 0
-		var region = Rect2(p3Boss * 32,0,32,32)
-		get_node("level/cameraControl/player3Boss").set_region_rect(region)
+	updateBossUI()
+
+func updateBossUI():
+	var region = Rect2(p0Boss * 32,0,32,32)
+	get_node("level/cameraControl/player0Boss").set_region_rect(region)
+	region = Rect2(p1Boss * 32,0,32,32)
+	get_node("level/cameraControl/player1Boss").set_region_rect(region)
+	region = Rect2(p2Boss * 32,0,32,32)
+	get_node("level/cameraControl/player2Boss").set_region_rect(region)
+	region = Rect2(p3Boss * 32,0,32,32)
+	get_node("level/cameraControl/player3Boss").set_region_rect(region)
 
 func _on_level_reset():# Remove the current level
 	game_win()
