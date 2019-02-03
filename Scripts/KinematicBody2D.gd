@@ -26,13 +26,11 @@ var laser
 var prelaser
 var laserPart2
 var tSmoke = 2.5
+var velocity
+var rotationDir
 
 func _ready():
 	pass
-
-var velocity = Vector2()
-var rotationDir = 0
-signal visionBlock
 
 func _process(delta):
 	tSmoke += delta
@@ -45,8 +43,8 @@ func _process(delta):
 		if tFreeze > dFreeze:
 			frozen = false
 			tFreeze = 0
-	birdTeleport()
 	abilityReset()
+	birdTeleport()
 
 func birdTeleport():
 	if self.position.y < -cameraHeight: #top
@@ -83,8 +81,6 @@ func getInput():
 		tSmoke = 0
 	if Input.is_action_just_pressed(b):
 		ability3()
-	#if Input.is_action_just_pressed("bird_ability_4"):
-		
 
 func _physics_process(delta):
 	getInput()

@@ -1,13 +1,17 @@
 extends Node
 
-# class member variables go here, for example:
-# var a = 2
 const numLevels = 3
+const numBosses = 2
 
+export var p0Boss = 0
+export var p1Boss = 0
+export var p2Boss = 0
+export var p3Boss = 0
 export var lvlSelect = 1
 export var playerWinner = 0
 export var firstLoad = true
 export var snakeAbilities = 0
+
 var curLevel = 0
 var gameEnd
 var gameWinner
@@ -17,11 +21,34 @@ var birdGamesWon = 0
 func _ready():
 	firstLoad = false
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func _process(delta):
+	bossSelect()
 
+func bossSelect():
+	if Input.is_action_just_pressed("p0Y"):
+		p0Boss += 1
+		if p0Boss >= numBosses:
+			p0Boss = 0
+		var region = Rect2(p0Boss * 32,0,32,32)
+		get_node("level/cameraControl/player0Boss").set_region_rect(region)
+	if Input.is_action_just_pressed("p1Y"):
+		p1Boss += 1
+		if p1Boss >= numBosses:
+			p1Boss = 0
+		var region = Rect2(p1Boss * 32,0,32,32)
+		get_node("level/cameraControl/player1Boss").set_region_rect(region)
+	if Input.is_action_just_pressed("p2Y"):
+		p2Boss += 1
+		if p2Boss >= numBosses:
+			p2Boss = 0
+		var region = Rect2(p2Boss * 32,0,32,32)
+		get_node("level/cameraControl/player2Boss").set_region_rect(region)
+	if Input.is_action_just_pressed("p3Y"):
+		p3Boss += 1
+		if p3Boss >= numBosses:
+			p3Boss = 0
+		var region = Rect2(p3Boss * 32,0,32,32)
+		get_node("level/cameraControl/player3Boss").set_region_rect(region)
 
 func _on_level_reset():# Remove the current level
 	game_win()
@@ -56,7 +83,7 @@ func game_win():
 		snakeAbilities = 0
 		playerWinner = level.winningPlayer
 		printing = "snake win"
-	#print(playerWinner,"root")
+	print(playerWinner,"root")
 
 
 func level_delete():

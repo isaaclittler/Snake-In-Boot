@@ -6,6 +6,10 @@
 [node name="root" type="Node"]
 
 script = ExtResource( 1 )
+p0Boss = 0
+p1Boss = 0
+p2Boss = 0
+p3Boss = 0
 lvlSelect = 1
 playerWinner = 0
 firstLoad = true

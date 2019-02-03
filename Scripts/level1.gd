@@ -29,8 +29,19 @@ func _ready(): #set the finish point by object in here
 
 func load_boss():
 	var loading
+	if get_parent().playerWinner == 0:
+		bossNumber = get_parent().p0Boss
+	if get_parent().playerWinner == 1:
+		bossNumber = get_parent().p1Boss
+	if get_parent().playerWinner == 2:
+		bossNumber = get_parent().p2Boss
+	if get_parent().playerWinner == 3:
+		bossNumber = get_parent().p3Boss
 	if bossNumber == 0: #load bird
 		loading = load("res://Scenes/characters/Bird1.tscn").instance()
+		add_child(loading)
+	if bossNumber == 1:
+		loading =  load("res://Scenes/characters/Frog.tscn").instance()
 		add_child(loading)
 
 func load_snakes():
@@ -48,13 +59,12 @@ func load_snakes():
 func bossAssign(i):
 	var bird = get_child(2)
 	var birdNumber = i
-	if bossNumber == 0:
-		bird.left = str("p",birdNumber,"L")
-		bird.right = str("p",birdNumber,"R") 
-		bird.a = str("p",birdNumber,"A")
-		bird.b = str("p",birdNumber,"B")  
-		bird.x = str("p",birdNumber,"X") 
-		bird.y = str("p",birdNumber,"Y") 
+	bird.left = str("p",birdNumber,"L")
+	bird.right = str("p",birdNumber,"R") 
+	bird.a = str("p",birdNumber,"A")
+	bird.b = str("p",birdNumber,"B")  
+	bird.x = str("p",birdNumber,"X") 
+	bird.y = str("p",birdNumber,"Y")
 
 func snakeAssign(controllerNum,snakeNum):
 	var snake = get_tree().get_nodes_in_group("snakes")[snakeNum]

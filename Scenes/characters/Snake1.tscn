@@ -16,11 +16,10 @@ custom_solver_bias = 0.0
 radius = 10.0
 height = 5.0
 
-[node name="Snake1" type="KinematicBody2D" index="0" groups=[
+[node name="Snake1" type="KinematicBody2D" groups=[
 "snakes",
 ]]
 
-editor/display_folded = true
 light_mask = 4
 input_pickable = false
 collision_layer = 4

@@ -182,7 +182,6 @@ polygon = PoolVector2Array( 16, -16, -16, -16, -16, 16, 16, 16 )
 
 [node name="platformBox" type="Sprite" parent="items" index="5"]
 
-editor/display_folded = true
 position = Vector2( -128, -64 )
 texture = ExtResource( 2 )
 region_enabled = true

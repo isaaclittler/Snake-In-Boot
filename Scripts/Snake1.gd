@@ -12,6 +12,8 @@ export var spriteY = 0
 const GRAVITY = 250.0
 const BASE_SPEED = 200
 const JUMP_SPEED = 200
+const ROCKET_SPEED = 200
+const ROCKET_DURATION = 4
 
 onready var bird = get_node("../Bird1")
 
@@ -19,12 +21,18 @@ var velocity = Vector2()
 var curAirJumps = 1
 var abilityTemp = ability
 var flip = false
+var rocket = false
+var duration = 0
 
 
 func _process(delta):
 	if ability != abilityTemp:
-		updateSprite()
 		abilityTemp = ability
+	if rocket == true:
+		duration += delta
+		if duration >= ROCKET_DURATION:
+			rocket = false
+			ability = 0
 	updateSprite()
 
 func _physics_process(delta):
@@ -64,6 +72,8 @@ func _physics_process(delta):
 		print("extra jump")
 	if Input.is_action_just_pressed(bInput):
 		useAbility()
+	if rocket == true:
+		velocity.x += ROCKET_SPEED
 	if flip == false:
 		move_and_slide(velocity, Vector2(0, -1))
 	else:
@@ -130,30 +140,26 @@ func move(direction):
 		else:
 			velocity.y = 0
 
-func flipGravity():
-	var temp = velocity.x
-	velocity.x = velocity.y
-	velocity.y = temp
-	print(velocity)
-	move_and_slide(velocity, Vector2(1,0))
-
 func useAbility():
 	if ability == 0:
 		print("nothing")
-	if ability == 2:
+	if ability == 2: #freeze bird
 		print("ability 2")
 		bird.frozen = true
 		ability = 0
-	if ability == 3:
+	if ability == 3: #platform
 		var platform = load("res://Scenes/abilities/redCarpet.tscn").instance()
 		platform.position = Vector2(self.position.x + 32,self.position.y + 30)
 		get_parent().add_child(platform)
 		ability = 0
-	if ability == 4:
+	if ability == 4: #flip
 		self.rotation = -(.5 * PI)
 		flip = true
 		velocity.x = 0
 		velocity.y = 0
+	if ability == 6\
+	and rocket == false:
+		rocket = true
 
 func updateSprite():
 	var sprite = get_child(0)
