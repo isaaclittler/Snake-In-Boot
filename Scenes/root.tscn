@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/root.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/level1.tscn" type="PackedScene" id=2]
 
-[node name="root" type="Node"]
+[node name="root" type="Node" index="0"]
 
 script = ExtResource( 1 )
 p0Boss = 0

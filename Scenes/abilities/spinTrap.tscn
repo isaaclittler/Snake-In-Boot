@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/traps.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/abilities/spinTrap.gd" type="Script" id=2]
+
+[node name="spinTrap" type="Sprite"]
+
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, 16 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Region", "Transform", "Visibility" ]
+
+[node name="Area2D" type="Area2D" parent="." index="0"]
+
+position = Vector2( 0, 16 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 16
+collision_mask = 0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -8.58586, 9.45779, -7.97925, 6.42473, -6.56382, 2.51546, -2.56468, -0.652404, 1.749, 0.0665431, 5.63581, 1.4595, 8.37211, 5.56866, 7.70278, 8.4243, 6.57943, 12.401, 2.63092, 15.4, -1.44133, 14.7604, -5.53034, 13.9966 )
+
+

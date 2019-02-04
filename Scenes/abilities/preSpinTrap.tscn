@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/traps.png" type="Texture" id=1]
+
+[node name="spinTrap" type="Sprite"]
+
+modulate = Color( 0.132812, 0.110682, 0.0238647, 1 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, 16 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+_sections_unfolded = [ "Offset", "Region", "Visibility" ]
+
+

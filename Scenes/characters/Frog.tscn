@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 radius = 12.5
 
-[node name="Frog" type="KinematicBody2D" index="0"]
+[node name="Frog" type="KinematicBody2D"]
 
 light_mask = 4
 position = Vector2( 199, -27 )

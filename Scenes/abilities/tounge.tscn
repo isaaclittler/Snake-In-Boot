@@ -5,7 +5,7 @@
 [node name="Sprite" type="Sprite"]
 
 modulate = Color( 0.757812, 0.153931, 0.153931, 1 )
-scale = Vector2( 2.66667, 0.125 )
+scale = Vector2( 3, 0.125 )
 z_index = 5
 texture = ExtResource( 1 )
 region_enabled = true
@@ -29,5 +29,6 @@ _sections_unfolded = [ "Collision" ]
 
 build_mode = 0
 polygon = PoolVector2Array( -15.0588, -16, 15.0588, -16, 15.0588, 16, -15.0588, 16 )
+_sections_unfolded = [ "Transform" ]
 
 
