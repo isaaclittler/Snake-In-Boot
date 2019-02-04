@@ -10,11 +10,11 @@ const JUMP_SPEED = 350
 const NUM_TRAPS = 3
 
 const REFRESH_TIME = 2
-const NUM_SPIKES = 3
+const NUM_SPIKES = 5
 const SPIKE_TIME = 1
-const NUM_WALLS = 3
+const NUM_WALLS = 5
 const WALL_TIME = .5
-const NUM_SAWS = 1
+const NUM_SAWS = 3
 const SAW_TIME = 1.5
 
 export var left = ""
