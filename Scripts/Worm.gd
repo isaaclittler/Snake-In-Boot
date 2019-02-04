@@ -4,13 +4,18 @@ const cameraWidth = 495
 const placementOffset = 5
 
 const GRAVITY = 250.0
-const BASE_SPEED = 200
-const JUMP_SPEED = 300
+const BASE_SPEED = 350
+const JUMP_SPEED = 350
 
-const NUM_TRAPS = 1
+const NUM_TRAPS = 3
 
+const REFRESH_TIME = 2
 const NUM_SPIKES = 5
 const SPIKE_TIME = 1
+const NUM_WALLS = 5
+const WALL_TIME = .5
+const NUM_SAWS = 3
+const SAW_TIME = 1.5
 
 export var left = ""
 export var right = ""
@@ -23,6 +28,8 @@ var buildTime = 0
 var tBuild = 0
 var inBuild = false
 var spikes = NUM_SPIKES
+var saws = NUM_SAWS
+var walls = NUM_WALLS
 var cameraX = 0
 var tFreeze = 0
 var dFreeze = 1
@@ -74,15 +81,15 @@ func getInput():
 		direction = 1
 	else:
 		move(0)
-	if Input.is_action_just_pressed(a)\
+	if Input.is_action_pressed(a)\
 	and is_on_floor():
+		print("jump")
 		jump()
 	if Input.is_action_just_pressed(x)\
 	and inBuild == false:
 		toggleTrap()
 	if Input.is_action_just_pressed(b)\
-	and inBuild == false\
-	and trapNum != 0:
+	and inBuild == false:
 		building()
 
 func toggleTrap():
@@ -96,21 +103,53 @@ func toggleTrap():
 	if trapNum == 1:
 		curTrap = load("res://Scenes/abilities/preSpike.tscn").instance()
 		add_child(curTrap)
+	if trapNum == 2:
+		curTrap = load("res://Scenes/abilities/preWallTrap.tscn").instance()
+		add_child(curTrap)
+	if trapNum == 3:
+		curTrap = load("res://Scenes/abilities/preSpinTrap.tscn").instance()
+		add_child(curTrap)
 
 func building():
-	inBuild = true
-	if trapNum == 1:
-		buildTime = SPIKE_TIME
-
-func buildTrap():
-	print("building ",trapNum)
+	if trapNum == 0:
+		buildTime = REFRESH_TIME
+		inBuild = true
 	if trapNum == 1\
 	and spikes != 0:
 		spikes -= 1
+		buildTime = SPIKE_TIME
+		inBuild = true
+	if trapNum == 2\
+	and walls != 0:
+		walls -= 1
+		buildTime = WALL_TIME
+		inBuild = true
+	if trapNum == 3\
+	and saws != 0:
+		saws -= 1
+		buildTime = SAW_TIME
+		inBuild = true
+
+func buildTrap():
+	print("building ",trapNum)
+	if trapNum == 0:
+		spikes = NUM_SPIKES
+		walls = NUM_WALLS
+		saws = NUM_SAWS
+	if trapNum == 1:
 		var trap = load("res://Scenes/levelObjects/spikes.tscn").instance()
 		get_parent().add_child(trap)
 		trap.position = Vector2(self.position.x + direction * 32,self.position.y)
+	if trapNum == 2:
+		var trap = load("res://Scenes/abilities/wallTrap.tscn").instance()
+		get_parent().add_child(trap)
+		trap.position = Vector2(self.position.x + direction * 32,self.position.y)
+	if trapNum == 3:
+		var trap = load("res://Scenes/abilities/spinTrap.tscn").instance()
+		get_parent().add_child(trap)
+		trap.position = Vector2(self.position.x + direction * 32,self.position.y)
 	inBuild = false
+		
 	buildTime = 0
 
 func displayTrap():
@@ -123,9 +162,8 @@ func _physics_process(delta):
 		velocity.y = 0
 	if inBuild == false:
 		getInput()
-	else:
-		velocity.x = 0
-	if frozen == false:
+	if frozen == false\
+	and inBuild == false:
 		if velocity.y < GRAVITY * 1.5:
 			velocity.y += delta * GRAVITY
 		if (is_on_ceiling()):

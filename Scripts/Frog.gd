@@ -4,7 +4,7 @@ const cameraHeight = 284
 const cameraWidth = 495
 const placementOffset = 5
 
-const GRAVITY = 250.0
+const GRAVITY = 150.0
 const BASE_SPEED = 200
 const JUMP_SPEED = 300
 const TOUNGE_DURATION = 1
@@ -77,7 +77,7 @@ func getInput():
 	elif Input.is_action_just_pressed(b)\
 	and is_on_floor() == true:
 		tounge(0)
-	if Input.is_action_just_pressed(a)\
+	if Input.is_action_pressed(a)\
 	and is_on_floor():
 		jump()
 
@@ -87,12 +87,12 @@ func tounge(direction):
 			print("rightT")
 			tounge = load("res://Scenes/abilities/tounge.tscn").instance()
 			add_child(tounge)
-			tounge.position.x += 40
+			tounge.position.x += 48
 			toungeOut = true
 		if direction == -1:
 			tounge = load("res://Scenes/abilities/tounge.tscn").instance()
 			add_child(tounge)
-			tounge.position.x -= 40
+			tounge.position.x -= 48
 			print("leftT")
 			toungeOut = true
 		if direction == 0:
