@@ -26,12 +26,18 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 3 )
 _sections_unfolded = [ "Audio Bus", "Collision" ]
+__meta__ = {
+"_edit_lock_": true
+}
 abilityType = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
 
 build_mode = 0
 polygon = PoolVector2Array( 16, -16, -16, -16, -16, 16, 16, 16 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
 

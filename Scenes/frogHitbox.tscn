@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 12.5
+
+[node name="frogHitbox" type="CollisionShape2D"]
+
+position = Vector2( -1, -1 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+

@@ -15,7 +15,7 @@ const JUMP_SPEED = 200
 const ROCKET_SPEED = 200
 const ROCKET_DURATION = 4
 
-onready var bird = get_node("../Bird1")
+onready var boss = get_parent().get_child(2) #boss node
 
 var velocity = Vector2()
 var curAirJumps = 1
@@ -145,7 +145,7 @@ func useAbility():
 		print("nothing")
 	if ability == 2: #freeze bird
 		print("ability 2")
-		bird.frozen = true
+		boss.frozen = true
 		ability = 0
 	if ability == 3: #platform
 		var platform = load("res://Scenes/abilities/redCarpet.tscn").instance()

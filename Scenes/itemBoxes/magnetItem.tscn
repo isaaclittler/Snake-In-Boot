@@ -4,13 +4,14 @@
 [ext_resource path="res://Scenes/levels/itemBox.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/levels/Area2D.gd" type="Script" id=3]
 
-[node name="wheelBox" type="Sprite"]
+[node name="magnetBox" type="Sprite"]
 
-position = Vector2( -192, -64 )
+position = Vector2( -128, -64 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 128, 0, 32, 32 )
+region_rect = Rect2( 96, 0, 32, 32 )
 script = ExtResource( 2 )
+_sections_unfolded = [ "Region", "Transform" ]
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
 
@@ -28,7 +29,7 @@ _sections_unfolded = [ "Audio Bus", "Collision", "Transform" ]
 __meta__ = {
 "_edit_lock_": true
 }
-abilityType = 5
+abilityType = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
 
